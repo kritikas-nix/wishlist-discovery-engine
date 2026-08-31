@@ -1,0 +1,8 @@
+requests>=2.31
+google-play-scraper>=1.2.6
+anthropic>=0.40
+apify-client>=3.0
+firecrawl-py>=4.22
+pandas>=2.0
+streamlit>=1.30
+plotly>=5.18
