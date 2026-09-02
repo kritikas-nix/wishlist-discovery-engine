@@ -409,12 +409,12 @@ export default function MvpApp({ demos }: { demos: Product[] }) {
   return (
     <>
       <section className="section-block" style={{ borderTop: "none", paddingTop: 10 }}>
-        <h2 className="section">Rank a wishlist</h2>
-        <WishlistMode demos={demos} />
-      </section>
-      <section className="section-block">
         <h2 className="section">One item, in depth</h2>
         <BriefMode demos={demos} />
+      </section>
+      <section className="section-block">
+        <h2 className="section">Then rank a whole wishlist</h2>
+        <WishlistMode demos={demos} />
       </section>
     </>
   );
