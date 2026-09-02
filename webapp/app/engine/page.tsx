@@ -28,10 +28,9 @@ export default function EnginePage() {
           counted — and a classifier you can test yourself.
         </h1>
         <p className="lede" style={{ marginTop: 18 }}>
-          Every item was tagged by an LLM against a fixed schema, so
-          opportunity areas can be compared instead of described. Relevance is
-          filtered first: {(corpus.by_relevance as Record<string, number>).irrelevant} delivery
-          complaints and app gripes are excluded from every figure below.
+          Each item is LLM-tagged against a fixed schema so problems can be
+          counted and compared — after {(corpus.by_relevance as Record<string, number>).irrelevant} delivery
+          complaints and app gripes were filtered out.
         </p>
       </section>
 
@@ -51,11 +50,9 @@ export default function EnginePage() {
           Same blockers, split by what the doubt is about
         </h2>
         <p className="small" style={{ maxWidth: 640, marginBottom: 8 }}>
-          <strong>about_product</strong> = they lack information about the
-          item. <strong>about_self</strong> = they have the information and
-          cannot map it to their own body, taste or plans. Different problems
-          need different fixes, which is why they are counted apart — and the
-          split is 4:1 toward the product&apos;s information.
+          <strong>about_product</strong>: they lack information about the item.{" "}
+          <strong>about_self</strong>: they can&apos;t map it to their own body
+          or taste. Different fixes — and the split runs 4:1 to the product.
         </p>
         <div className="grid2">
           {(["about_product", "about_self"] as const).map((k) => (
@@ -125,9 +122,9 @@ export default function EnginePage() {
         <div className="kicker">Test the workflow live</div>
         <h2 className="section">Paste any shopping text. Watch it get tagged.</h2>
         <p className="small" style={{ maxWidth: 640, marginBottom: 14 }}>
-          This runs the exact prompt used on the full corpus — same schema,
-          same don&apos;t-guess rules. <span className="tag-code">unclear</span>{" "}
-          and empty answers are correct outputs, not failures.
+          The exact prompt used on the corpus.{" "}
+          <span className="tag-code">unclear</span> is a correct answer, not a
+          failure.
         </p>
         <Classifier blockerLabels={BLOCKERS} workaroundLabels={WORKAROUNDS} />
       </section>

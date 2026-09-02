@@ -12,6 +12,7 @@ export type Review = { text: string; rating: number | null; size_bought?: string
 export type Product = {
   style_id: string; brand: string; name: string; price: string;
   rating: number | null; rating_count: number | null; url: string;
+  image?: string | null;
   reviews: Review[];
 };
 
@@ -26,9 +27,31 @@ export function extractStyleId(url: string): string | null {
 // Firecrawl (REST v2)
 // ---------------------------------------------------------------------------
 
+async function fetchImage(styleId: string): Promise<string | null> {
+  const key = process.env.FIRECRAWL_API_KEY;
+  const resp = await fetch("https://api.firecrawl.dev/v2/scrape", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      url: `https://www.myntra.com/${styleId}`,
+      waitFor: 3000,
+      formats: [{
+        type: "json",
+        prompt: 'Return {"image": the absolute URL of the main product photo displayed on this page (an assets.myntassets.com URL), or null}',
+      }],
+    }),
+  });
+  if (!resp.ok) return null;
+  const body = await resp.json();
+  const img = body?.data?.json?.image;
+  if (typeof img !== "string" || !img.startsWith("http")) return null;
+  return img.replace(/f_auto,h_\d+,q_auto:best,w_\d+/, "f_auto,h_720,q_auto:best,w_540");
+}
+
 export async function fetchProduct(styleId: string): Promise<Product> {
   const key = process.env.FIRECRAWL_API_KEY;
   if (!key) throw new Error("FIRECRAWL_API_KEY not set");
+  const imagePromise = fetchImage(styleId).catch(() => null);
   const resp = await fetch("https://api.firecrawl.dev/v2/scrape", {
     method: "POST",
     headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
@@ -51,9 +74,11 @@ export async function fetchProduct(styleId: string): Promise<Product> {
   if (!resp.ok) throw new Error(`firecrawl ${resp.status}`);
   const body = await resp.json();
   const data = body?.data?.json ?? {};
+  const meta = body?.data?.metadata ?? {};
   const reviews: Review[] = (data.reviews ?? [])
     .filter((r: Review) => String(r?.text ?? "").trim().length >= 15)
     .slice(0, MAX_REVIEWS);
+  void meta;
   return {
     style_id: styleId,
     brand: data.brand ?? "",
@@ -62,6 +87,7 @@ export async function fetchProduct(styleId: string): Promise<Product> {
     rating: data.rating ?? null,
     rating_count: data.rating_count ?? null,
     url: `https://www.myntra.com/reviews/${styleId}`,
+    image: await imagePromise,
     reviews,
   };
 }
