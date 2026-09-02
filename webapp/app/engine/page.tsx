@@ -171,9 +171,13 @@ export default function EnginePage() {
         <div className="notice">
           Said plainly: public feedback is written by people who chose to
           write it, and it leans toward whatever is easiest to complain
-          about. The tagging is done by a model and carries some error.
-          These numbers tell us where to look. A survey of 16 real wishlists
-          then tested what they suggest, and pointed the same way.
+          about. The tagging is done by a model, so we audited it: a blind
+          human re-check of 40 items agreed on relevant-or-not 32 times out
+          of 40, and on the blocker 11 times out of 12 when both called an
+          item relevant. The model&apos;s errors lean one way, counting
+          borderline platform chatter as relevant, so the top blocker&apos;s
+          count is likely a few items generous. The finding still stands,
+          and a survey of 16 real wishlists pointed the same way.
         </div>
       </section>
 

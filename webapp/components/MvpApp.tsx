@@ -88,6 +88,55 @@ function ProgressCard({ prog }: { prog: Progress }) {
   );
 }
 
+function FeedbackRow({ kind, styleId, doubt }: {
+  kind: string; styleId: string; doubt?: string;
+}) {
+  const [settled, setSettled] = useState("");
+  const [action, setAction] = useState("");
+  const [sent, setSent] = useState(false);
+
+  async function send(s: string, a: string) {
+    if (!s || !a || sent) return;
+    setSent(true);
+    try {
+      await fetch("/api/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ kind, settled: s, action: a, style_id: styleId, doubt }),
+      });
+    } catch { /* logging must never break the page */ }
+  }
+
+  if (sent) {
+    return (
+      <div className="notice reveal">
+        Noted, thank you. This is the exact signal the product would measure
+        at scale: did the answer settle the doubt, and what happened next.
+      </div>
+    );
+  }
+  return (
+    <div className="card" style={{ background: "var(--paper-deep)" }}>
+      <p style={{ fontWeight: 600 }}>Did this settle your doubt?</p>
+      <div className="choices" style={{ marginBottom: 6 }}>
+        {["Yes", "Partly", "No"].map((s) => (
+          <button key={s} className={`chip${settled === s ? " on" : ""}`}
+            type="button"
+            onClick={() => { setSettled(s); send(s, action); }}>{s}</button>
+        ))}
+      </div>
+      <p style={{ fontWeight: 600 }}>And what would you do with this item now?</p>
+      <div className="choices" style={{ marginBottom: 0 }}>
+        {["Buy it", "Keep it saved", "Remove it"].map((a) => (
+          <button key={a} className={`chip${action === a ? " on" : ""}`}
+            type="button"
+            onClick={() => { setAction(a); send(settled, a); }}>{a}</button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function Thumb({ p, size = 74 }: { p: Product; size?: number }) {
   if (!p.image) return null;
   return (
@@ -267,6 +316,7 @@ function BriefMode({ demos }: { demos: Product[] }) {
               </ul>
             </div>
           )}
+          <FeedbackRow kind="brief" styleId={result.product.style_id} doubt={doubt} />
         </div>
       )}
     </div>
@@ -430,6 +480,8 @@ function WishlistMode({ demos }: { demos: Product[] }) {
             Ranked only by what buyer reviews show. For any single item, use
             the deep answer above.
           </p>
+          <FeedbackRow kind="ranking"
+            styleId={ranked.map((r) => r.product.style_id).join(",")} />
         </div>
       )}
     </div>

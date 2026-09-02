@@ -1,0 +1,47 @@
+{
+ "results": {
+  "n": 40,
+  "relevant_vs_not_agreement": "32 of 40",
+  "relevance_class_agreement": "28 of 40",
+  "blocker_overlap_when_both_relevant": "11 of 12",
+  "uncertainty_match_when_both_relevant": "7 of 12"
+ },
+ "disagreements": [
+  {
+   "k": 4,
+   "issue": "relevance: model=purchase_decision human=irrelevant"
+  },
+  {
+   "k": 7,
+   "issue": "relevance: model=purchase_decision human=irrelevant"
+  },
+  {
+   "k": 8,
+   "issue": "relevance: model=purchase_decision human=irrelevant"
+  },
+  {
+   "k": 9,
+   "issue": "relevance: model=purchase_decision human=irrelevant"
+  },
+  {
+   "k": 10,
+   "issue": "relevance: model=purchase_decision human=irrelevant"
+  },
+  {
+   "k": 16,
+   "issue": "relevance: model=purchase_decision human=irrelevant"
+  },
+  {
+   "k": 27,
+   "issue": "blockers: model=['trust_platform'] human=['none_stated']"
+  },
+  {
+   "k": 34,
+   "issue": "relevance: model=purchase_decision human=irrelevant"
+  },
+  {
+   "k": 38,
+   "issue": "relevance: model=purchase_decision human=irrelevant"
+  }
+ ]
+}

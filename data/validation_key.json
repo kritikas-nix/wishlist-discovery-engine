@@ -1,0 +1,287 @@
+{
+ "0": {
+  "id": "yt_Ugynn7M5_dylyHBLlW94AaABAg",
+  "relevance": "purchase_decision",
+  "blockers": [
+   "fit_size"
+  ],
+  "uncertainty_object": "about_product"
+ },
+ "1": {
+  "id": "play_nykaafashion_da968956-2bc6-45d2-bd9b-8df908f6d6e5",
+  "relevance": "irrelevant",
+  "blockers": [],
+  "uncertainty_object": "not_applicable"
+ },
+ "2": {
+  "id": "rd_t1_o3g78fo",
+  "relevance": "post_purchase",
+  "blockers": [],
+  "uncertainty_object": "not_applicable"
+ },
+ "3": {
+  "id": "rd_t3_1ro0jxh",
+  "relevance": "post_purchase",
+  "blockers": [
+   "trust_platform"
+  ],
+  "uncertainty_object": "about_product"
+ },
+ "4": {
+  "id": "play_ajio_59be7dda-d98c-4bb5-8303-e9878cb46299",
+  "relevance": "purchase_decision",
+  "blockers": [
+   "trust_platform"
+  ],
+  "uncertainty_object": "not_applicable"
+ },
+ "5": {
+  "id": "play_ajio_f8b9defd-efa9-4921-8b05-fb65c7ab01c7",
+  "relevance": "irrelevant",
+  "blockers": [],
+  "uncertainty_object": "not_applicable"
+ },
+ "6": {
+  "id": "play_myntra_3b73199c-57db-4221-9de3-a7ba230f6de1",
+  "relevance": "irrelevant",
+  "blockers": [],
+  "uncertainty_object": "not_applicable"
+ },
+ "7": {
+  "id": "yt_Ugx_Fty2AhLxXBGI4Y14AaABAg",
+  "relevance": "purchase_decision",
+  "blockers": [
+   "trust_platform"
+  ],
+  "uncertainty_object": "about_product"
+ },
+ "8": {
+  "id": "rd_t1_nzoeg0i",
+  "relevance": "purchase_decision",
+  "blockers": [
+   "trust_platform"
+  ],
+  "uncertainty_object": "about_product"
+ },
+ "9": {
+  "id": "play_myntra_90545153-c7d6-4dcd-a88f-05c1d2fd876b",
+  "relevance": "purchase_decision",
+  "blockers": [
+   "price_worth"
+  ],
+  "uncertainty_object": "about_product"
+ },
+ "10": {
+  "id": "yt_UgzlzyqJkKEPSHcUlNF4AaABAg",
+  "relevance": "purchase_decision",
+  "blockers": [
+   "trust_platform"
+  ],
+  "uncertainty_object": "about_product"
+ },
+ "11": {
+  "id": "myntra_38401409_2",
+  "relevance": "post_purchase",
+  "blockers": [
+   "quality_material"
+  ],
+  "uncertainty_object": "about_product"
+ },
+ "12": {
+  "id": "rd_t1_o41uf6e",
+  "relevance": "irrelevant",
+  "blockers": [],
+  "uncertainty_object": "not_applicable"
+ },
+ "13": {
+  "id": "myntra_33720581_14",
+  "relevance": "post_purchase",
+  "blockers": [],
+  "uncertainty_object": "not_applicable"
+ },
+ "14": {
+  "id": "play_nykaafashion_a2e4cad6-0b6a-4bd6-80df-1eb3b7a701a2",
+  "relevance": "irrelevant",
+  "blockers": [],
+  "uncertainty_object": "not_applicable"
+ },
+ "15": {
+  "id": "play_myntra_3ae73297-1e79-4c22-8300-5f2f0081b675",
+  "relevance": "irrelevant",
+  "blockers": [],
+  "uncertainty_object": "not_applicable"
+ },
+ "16": {
+  "id": "play_ajio_4ef497a5-17b1-4a8d-87c9-60222e002c6c",
+  "relevance": "purchase_decision",
+  "blockers": [
+   "trust_platform"
+  ],
+  "uncertainty_object": "about_product"
+ },
+ "17": {
+  "id": "yt_UgyjHeLZO7Iqg58ig5B4AaABAg",
+  "relevance": "purchase_decision",
+  "blockers": [
+   "price_worth"
+  ],
+  "uncertainty_object": "about_product"
+ },
+ "18": {
+  "id": "yt_Ugxn05h9OYb9R_em2wN4AaABAg",
+  "relevance": "deferred_purchase",
+  "blockers": [
+   "quality_material"
+  ],
+  "uncertainty_object": "about_product"
+ },
+ "19": {
+  "id": "yt_UgxboggcsNtw18wHISt4AaABAg",
+  "relevance": "purchase_decision",
+  "blockers": [
+   "quality_material",
+   "social_validation"
+  ],
+  "uncertainty_object": "about_product"
+ },
+ "20": {
+  "id": "play_myntra_903edf85-3397-4a6e-b1a6-a4f7ac4359f9",
+  "relevance": "post_purchase",
+  "blockers": [],
+  "uncertainty_object": "not_applicable"
+ },
+ "21": {
+  "id": "myntra_30462651_20",
+  "relevance": "post_purchase",
+  "blockers": [],
+  "uncertainty_object": "not_applicable"
+ },
+ "22": {
+  "id": "yt_Ugxvc45KY-j331nvWKp4AaABAg",
+  "relevance": "purchase_decision",
+  "blockers": [
+   "fit_size"
+  ],
+  "uncertainty_object": "about_product"
+ },
+ "23": {
+  "id": "yt_Ugw40wIdpAP8jCOcOUx4AaABAg",
+  "relevance": "purchase_decision",
+  "blockers": [
+   "trust_platform"
+  ],
+  "uncertainty_object": "not_applicable"
+ },
+ "24": {
+  "id": "yt_UgwoNEUX8xk1IAELVGB4AaABAg",
+  "relevance": "purchase_decision",
+  "blockers": [
+   "price_worth"
+  ],
+  "uncertainty_object": "about_product"
+ },
+ "25": {
+  "id": "yt_UgxCA1b-1Tx_1PEihiR4AaABAg",
+  "relevance": "irrelevant",
+  "blockers": [],
+  "uncertainty_object": "not_applicable"
+ },
+ "26": {
+  "id": "play_nykaafashion_b9d15014-6fc0-46b4-bf2d-2bc50f1ecd07",
+  "relevance": "irrelevant",
+  "blockers": [],
+  "uncertainty_object": "not_applicable"
+ },
+ "27": {
+  "id": "play_ajio_1b9d1eab-96c8-45aa-8b00-3112d2bfbbc6",
+  "relevance": "purchase_decision",
+  "blockers": [
+   "trust_platform"
+  ],
+  "uncertainty_object": "about_context"
+ },
+ "28": {
+  "id": "play_myntra_7261f9d9-fd36-4d24-9d89-be210de4bac2",
+  "relevance": "post_purchase",
+  "blockers": [],
+  "uncertainty_object": "not_applicable"
+ },
+ "29": {
+  "id": "yt_Ugx9iPOXB3Joz6jyzdJ4AaABAg",
+  "relevance": "purchase_decision",
+  "blockers": [
+   "price_absolute"
+  ],
+  "uncertainty_object": "about_context"
+ },
+ "30": {
+  "id": "yt_UgyTRZugprrKi_gnCG94AaABAg",
+  "relevance": "purchase_decision",
+  "blockers": [
+   "trust_platform"
+  ],
+  "uncertainty_object": "not_applicable"
+ },
+ "31": {
+  "id": "yt_UgyBC09k-RoFOc68x3p4AaABAg",
+  "relevance": "purchase_decision",
+  "blockers": [
+   "trust_platform"
+  ],
+  "uncertainty_object": "about_context"
+ },
+ "32": {
+  "id": "play_myntra_112c296c-d3a3-4222-acf2-70a439b12962",
+  "relevance": "purchase_decision",
+  "blockers": [
+   "price_worth"
+  ],
+  "uncertainty_object": "about_context"
+ },
+ "33": {
+  "id": "play_nykaafashion_d03d0fa6-299a-4e9d-9699-d26c22171ecf",
+  "relevance": "irrelevant",
+  "blockers": [],
+  "uncertainty_object": "not_applicable"
+ },
+ "34": {
+  "id": "play_myntra_b7643b0b-c339-4733-ae70-5c8f8ba024d6",
+  "relevance": "purchase_decision",
+  "blockers": [
+   "none_stated"
+  ],
+  "uncertainty_object": "not_applicable"
+ },
+ "35": {
+  "id": "myntra_19202890_3",
+  "relevance": "post_purchase",
+  "blockers": [],
+  "uncertainty_object": "not_applicable"
+ },
+ "36": {
+  "id": "myntra_30462651_19",
+  "relevance": "post_purchase",
+  "blockers": [],
+  "uncertainty_object": "not_applicable"
+ },
+ "37": {
+  "id": "play_ajio_3c93ed5d-3a74-4d62-8dcc-4ca6b00cacb3",
+  "relevance": "post_purchase",
+  "blockers": [],
+  "uncertainty_object": "not_applicable"
+ },
+ "38": {
+  "id": "yt_UgwLASi5zfH3hUAsWrJ4AaABAg",
+  "relevance": "purchase_decision",
+  "blockers": [
+   "none_stated"
+  ],
+  "uncertainty_object": "not_applicable"
+ },
+ "39": {
+  "id": "play_nykaafashion_d3fc84c1-a2e9-4d82-8da0-c441a60f74ca",
+  "relevance": "irrelevant",
+  "blockers": [],
+  "uncertainty_object": "not_applicable"
+ }
+}

@@ -11,7 +11,13 @@ export async function POST(req: Request) {
         { error: "That does not look like a Myntra product link." },
         { status: 400 });
     }
-    const product = await fetchProduct(sid);
+    let product;
+    try {
+      product = await fetchProduct(sid);
+    } catch {
+      // one automatic retry; scraping occasionally fails transiently
+      product = await fetchProduct(sid);
+    }
     return Response.json(product);
   } catch (e) {
     return Response.json(
