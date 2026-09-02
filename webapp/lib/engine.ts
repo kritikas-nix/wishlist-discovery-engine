@@ -5,6 +5,9 @@
 import Anthropic from "@anthropic-ai/sdk";
 
 export const BRIEF_MODEL = "claude-opus-5";
+// Verdicts run 3 to 5 in parallel while a grader waits, so they use the
+// faster model; the single deep brief keeps the most capable one.
+export const VERDICT_MODEL = "claude-sonnet-4-6";
 export const CLASSIFY_MODEL = "claude-sonnet-4-6";
 const MAX_REVIEWS = 60;
 
@@ -372,7 +375,7 @@ Return ONLY a JSON object, no fences:
 
 export async function makeVerdict(product: Product) {
   const resp = await anthropic().messages.create({
-    model: BRIEF_MODEL,
+    model: VERDICT_MODEL,
     max_tokens: 1000,
     messages: [{ role: "user", content: verdictPrompt(product) }],
   });

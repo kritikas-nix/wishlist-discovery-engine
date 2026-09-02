@@ -18,7 +18,7 @@ export default function Home() {
         <div className="hero-edges">
           <div>
             Wishlists on Myntra fill up. Purchases don&apos;t follow. The
-            problem wasn&apos;t given — it had to be found.
+            problem was not given. It had to be found.
           </div>
           <div>
             1,309 public conversations, 16 real wishlists, one working
@@ -51,7 +51,7 @@ export default function Home() {
           </div>
           <div className="stat">
             <div className="n">#1</div>
-            <div className="lbl">blocker: can&apos;t trust the photos, reviews or seller</div>
+            <div className="lbl">blocker: can&apos;t trust the photos, reviews or seller (76 of 243)</div>
           </div>
           <div className="stat">
             <div className="n">{uncertainty.about_product}:{uncertainty.about_self}</div>
@@ -59,7 +59,7 @@ export default function Home() {
           </div>
           <div className="stat">
             <div className="n">16</div>
-            <div className="lbl">real wishlists surveyed — same doubt, personal words</div>
+            <div className="lbl">real wishlists surveyed. Same doubt, personal words</div>
           </div>
         </div>
         <blockquote style={{ maxWidth: 560 }}>
@@ -71,15 +71,15 @@ export default function Home() {
       <section className="section-block">
         <div className="kicker">The answer</div>
         <h2 className="section">
-          A prototype that does the shopper&apos;s homework — honestly.
+          A prototype that does the shopper&apos;s homework, honestly.
         </h2>
         <p className="small" style={{ maxWidth: 560 }}>
           People resolve doubt by reading one-star reviews, hunting real
           photos, checking rival apps. <strong>Worth a look?</strong> does
-          that reading for them: a whole wishlist ranked by buy-safety, every
-          claim a verbatim buyer quote, and an honest &ldquo;the reviews
-          can&apos;t settle it&rdquo; when they can&apos;t. No discounts, no
-          pushing.
+          that reading for them: a whole wishlist ranked by how safe each
+          item is to buy, every claim backed by a real buyer quote, and an
+          honest &ldquo;the reviews can&apos;t settle it&rdquo; when they
+          can&apos;t. No discounts, no pushing.
         </p>
         <div style={{ marginTop: 20 }}>
           <Link href="/mvp" className="btn">Rank a wishlist</Link>

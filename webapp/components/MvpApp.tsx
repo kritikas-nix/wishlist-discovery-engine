@@ -25,6 +25,7 @@ type Brief = {
   photo_reality: BriefSection; worth_read: BriefSection;
   bottom_line: string; gaps: string[];
 };
+type Progress = { steps: string[]; current: number } | null;
 
 const SAFETY = {
   looks_safe: { cls: "safe", label: "Looks safe to buy" },
@@ -65,6 +66,26 @@ async function post<T>(url: string, body: unknown): Promise<T> {
   const j = await r.json();
   if (!r.ok) throw new Error(j.error ?? "request failed");
   return j as T;
+}
+
+function ProgressCard({ prog }: { prog: Progress }) {
+  if (!prog) return null;
+  return (
+    <div className="progress-card reveal">
+      <div className="ptitle"><span className="spin" />Working on it</div>
+      <div className="psub">
+        Real reviews are being fetched and read right now. This usually takes
+        20 to 60 seconds. Nothing is cached and nothing is invented.
+      </div>
+      <ol>
+        {prog.steps.map((s, i) => (
+          <li key={i} className={i < prog.current ? "done" : i === prog.current ? "now" : ""}>
+            <span className="dot">✓</span>{s}
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
 }
 
 function Thumb({ p, size = 74 }: { p: Product; size?: number }) {
@@ -120,162 +141,6 @@ function MetaLine({ p }: { p: Product }) {
 }
 
 // ---------------------------------------------------------------------------
-// Wishlist ranking
-// ---------------------------------------------------------------------------
-
-function WishlistMode({ demos }: { demos: Product[] }) {
-  const [selected, setSelected] = useState<Set<string>>(new Set());
-  const [urls, setUrls] = useState("");
-  const [phase, setPhase] = useState("");
-  const [error, setError] = useState("");
-  const [ranked, setRanked] = useState<{ product: Product; verdict: Verdict }[] | null>(null);
-
-  function toggle(id: string) {
-    setSelected((s) => {
-      const next = new Set(s);
-      if (next.has(id)) next.delete(id);
-      else if (next.size < 5) next.add(id);
-      return next;
-    });
-  }
-
-  async function run(products: Product[]) {
-    setPhase(`Reading reviews for ${products.length} items…`);
-    const results = await Promise.all(products.map(async (p) => {
-      try {
-        return { product: p, verdict: await post<Verdict>("/api/verdict", { product: p }) };
-      } catch {
-        return {
-          product: p,
-          verdict: {
-            safety: "reviews_cant_settle", headline:
-              "Could not read this item's reviews right now.",
-            risk: "", size_note: "", key_quote: null, evidence_strength: "thin",
-          } as Verdict,
-        };
-      }
-    }));
-    const order = { looks_safe: 0, has_risks: 1, reviews_cant_settle: 2 };
-    results.sort((a, b) =>
-      order[a.verdict.safety] - order[b.verdict.safety] ||
-      b.product.reviews.length - a.product.reviews.length);
-    setRanked(results);
-    setPhase("");
-  }
-
-  async function goSelected() {
-    setError(""); setRanked(null);
-    const chosen = demos.filter((d) => selected.has(d.style_id));
-    if (!chosen.length) { setError("Tap a few items first."); return; }
-    await run(chosen);
-  }
-
-  async function goLinks() {
-    setError(""); setRanked(null);
-    const lines = urls.split("\n").map((l) => l.trim()).filter(Boolean).slice(0, 5);
-    if (!lines.length) { setError("Paste at least one Myntra product link."); return; }
-    try {
-      setPhase(`Fetching ${lines.length} item${lines.length > 1 ? "s" : ""} from Myntra…`);
-      const products: Product[] = [];
-      for (const line of lines) {
-        try { products.push(await post<Product>("/api/product", { url: line })); }
-        catch { /* skip unfetchable */ }
-      }
-      if (!products.length) {
-        throw new Error("None of those links could be fetched — Myntra may be blocking automated fetching right now. The sample items always work.");
-      }
-      await run(products);
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Something went wrong.");
-      setPhase("");
-    }
-  }
-
-  const counts = ranked
-    ? ranked.reduce<Record<string, number>>((acc, r) => {
-        acc[r.verdict.safety] = (acc[r.verdict.safety] ?? 0) + 1; return acc;
-      }, {})
-    : {};
-  const summaryWord: Record<string, string> = {
-    looks_safe: "safe to buy", has_risks: "with real risks",
-    reviews_cant_settle: "unsettled",
-  };
-
-  return (
-    <div>
-      <p className="small">
-        Tap items to build a wishlist (up to five), then rank it.
-      </p>
-      <PickGrid demos={demos} selected={selected} toggle={toggle} />
-      <button className="btn" onClick={goSelected} disabled={!!phase || selected.size === 0}>
-        {phase ? <><span className="spin" />{phase}</> :
-          `Rank ${selected.size || "my"} item${selected.size !== 1 ? "s" : ""}`}
-      </button>
-      <div className="live-panel">
-        <div className="live-head">
-          <span className="live-badge">Live</span>
-          Or rank your own real wishlist
-        </div>
-        <div className="sub">
-          Open Myntra, copy the links of items you have saved, and paste them
-          here — one per line, up to five. They are fetched live from
-          myntra.com, reviews and all. Not samples.
-        </div>
-        <textarea rows={3} value={urls}
-          placeholder={"https://www.myntra.com/…/31034107/buy\nhttps://www.myntra.com/…/33720581/buy"}
-          onChange={(e) => setUrls(e.target.value)} />
-        <button className="btn" style={{ marginTop: 12 }}
-          onClick={goLinks} disabled={!!phase}>
-          {phase ? <><span className="spin" />{phase}</> : "Fetch & rank my real items"}
-        </button>
-      </div>
-      {error && <div className="error-box">{error}</div>}
-      {ranked && (
-        <div className="reveal" style={{ marginTop: 22 }}>
-          <p>
-            <strong>{ranked.length} item{ranked.length > 1 ? "s" : ""}, safest first</strong>
-            {" — "}
-            {Object.entries(summaryWord)
-              .filter(([k]) => counts[k])
-              .map(([k, w]) => `${counts[k]} ${w}`)
-              .join(", ")}.
-          </p>
-          {ranked.map(({ product: p, verdict: v }, i) => (
-            <div className="card" key={p.style_id}>
-              <div className="card-flex">
-                <Thumb p={p} />
-                <div style={{ minWidth: 0 }}>
-                  <div style={{ display: "flex", gap: 12, alignItems: "baseline", flexWrap: "wrap" }}>
-                    <h3>{i + 1}. {p.brand} — {p.name.slice(0, 60)}</h3>
-                    <span className={`badge ${SAFETY[v.safety].cls}`}>{SAFETY[v.safety].label}</span>
-                  </div>
-                  <MetaLine p={p} />
-                  <p style={{ marginTop: 10 }}>{v.headline}</p>
-                  {v.risk && <p style={{ marginTop: 6 }}>⚠️ {v.risk}</p>}
-                  {v.size_note && <p style={{ marginTop: 6 }}>📏 {v.size_note}</p>}
-                  {v.key_quote && (
-                    <blockquote>
-                      “{v.key_quote.text}”<span className="who">buyer review</span>
-                    </blockquote>
-                  )}
-                  {v.evidence_strength === "thin" && (
-                    <p className="muted">Thin evidence: few usable reviews.</p>
-                  )}
-                </div>
-              </div>
-            </div>
-          ))}
-          <p className="muted">
-            Ranked only by what buyer reviews show. For any single item, use
-            the deep brief below.
-          </p>
-        </div>
-      )}
-    </div>
-  );
-}
-
-// ---------------------------------------------------------------------------
 // Single-item deep brief
 // ---------------------------------------------------------------------------
 
@@ -283,35 +148,37 @@ function BriefMode({ demos }: { demos: Product[] }) {
   const [picked, setPicked] = useState<string | null>(demos[0]?.style_id ?? null);
   const [url, setUrl] = useState("");
   const [doubt, setDoubt] = useState("size");
-  const [phase, setPhase] = useState("");
+  const [prog, setProg] = useState<Progress>(null);
   const [error, setError] = useState("");
   const [result, setResult] = useState<{ product: Product; brief: Brief } | null>(null);
 
-  async function runProduct(product: Product) {
-    setPhase(`Reading ${product.reviews.length} buyer reviews…`);
-    const brief = await post<Brief>("/api/brief", { product, doubt });
-    setResult({ product, brief });
-    setPhase("");
-  }
-
   async function go() {
     setError(""); setResult(null);
+    const live = !!url.trim();
+    const steps = live
+      ? ["Fetching the product and its reviews from Myntra",
+         "Reading every review", "Writing your answer"]
+      : ["Loading the item", "Reading every review", "Writing your answer"];
     try {
-      if (url.trim()) {
-        setPhase("Fetching the product and its reviews…");
-        const product = await post<Product>("/api/product", { url });
+      let product: Product;
+      if (live) {
+        setProg({ steps, current: 0 });
+        product = await post<Product>("/api/product", { url });
         if (!product.reviews.length) {
-          throw new Error("This item has no readable buyer reviews — which is itself worth knowing before you buy.");
+          throw new Error("This item has no readable buyer reviews. That is itself worth knowing before you buy.");
         }
-        await runProduct(product);
       } else {
         const p = demos.find((d) => d.style_id === picked);
         if (!p) { setError("Pick an item or paste a link."); return; }
-        await runProduct(p);
+        product = p;
       }
+      setProg({ steps, current: 2 });
+      const brief = await post<Brief>("/api/brief", { product, doubt });
+      setResult({ product, brief });
+      setProg(null);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Something went wrong.");
-      setPhase("");
+      setProg(null);
     }
   }
 
@@ -320,7 +187,7 @@ function BriefMode({ demos }: { demos: Product[] }) {
 
   return (
     <div>
-      <p className="small">Pick one item — or paste a live link — and say your doubt.</p>
+      <p className="small">Pick one item, or paste a live link, and say your doubt.</p>
       <PickGrid demos={demos} selected={selectedSet}
         toggle={(id) => { setPicked(id); setUrl(""); }} />
       <div className="live-panel">
@@ -329,8 +196,8 @@ function BriefMode({ demos }: { demos: Product[] }) {
           Or any item on Myntra, right now
         </div>
         <div className="sub">
-          Paste any myntra.com product link — it is fetched live with its
-          real buyer reviews.
+          Paste any myntra.com product link. It is fetched live with its real
+          buyer reviews.
         </div>
         <input type="text" value={url}
           placeholder="https://www.myntra.com/dresses/brand/…/31034107/buy"
@@ -342,9 +209,10 @@ function BriefMode({ demos }: { demos: Product[] }) {
             onClick={() => setDoubt(k)} type="button">{label}</button>
         ))}
       </div>
-      <button className="btn" onClick={go} disabled={!!phase}>
-        {phase ? <><span className="spin" />{phase}</> : "Read the reviews for me"}
+      <button className="btn" onClick={go} disabled={!!prog}>
+        Read the reviews for me
       </button>
+      <ProgressCard prog={prog} />
       {error && <div className="error-box">{error}</div>}
       {result && (
         <div className="reveal" style={{ marginTop: 22 }}>
@@ -352,7 +220,7 @@ function BriefMode({ demos }: { demos: Product[] }) {
             <Thumb p={result.product} size={92} />
             <div>
               <h3 style={{ fontFamily: "var(--serif)", fontSize: 20 }}>
-                {result.product.brand} — {result.product.name}
+                {result.product.brand}: {result.product.name}
               </h3>
               <MetaLine p={result.product} />
             </div>
@@ -362,8 +230,8 @@ function BriefMode({ demos }: { demos: Product[] }) {
             <p>{result.brief.bottom_line}</p>
             <p className="muted" style={{ marginTop: 8 }}>
               Built only from the {result.product.reviews.length} buyer
-              reviews fetched for this item. Quotes are verbatim,
-              machine-checked against the review text.
+              reviews fetched for this item. Quotes are word for word,
+              checked by the system against the review text.
             </p>
           </div>
           {(Object.keys(SECTION_TITLES) as (keyof typeof SECTION_TITLES)[])
@@ -399,6 +267,169 @@ function BriefMode({ demos }: { demos: Product[] }) {
               </ul>
             </div>
           )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Wishlist ranking
+// ---------------------------------------------------------------------------
+
+function WishlistMode({ demos }: { demos: Product[] }) {
+  const [selected, setSelected] = useState<Set<string>>(new Set());
+  const [urls, setUrls] = useState("");
+  const [prog, setProg] = useState<Progress>(null);
+  const [error, setError] = useState("");
+  const [ranked, setRanked] = useState<{ product: Product; verdict: Verdict }[] | null>(null);
+
+  function toggle(id: string) {
+    setSelected((s) => {
+      const next = new Set(s);
+      if (next.has(id)) next.delete(id);
+      else if (next.size < 5) next.add(id);
+      return next;
+    });
+  }
+
+  async function run(products: Product[], steps: string[], reviewStep: number) {
+    setProg({ steps, current: reviewStep });
+    const results = await Promise.all(products.map(async (p) => {
+      try {
+        return { product: p, verdict: await post<Verdict>("/api/verdict", { product: p }) };
+      } catch {
+        return {
+          product: p,
+          verdict: {
+            safety: "reviews_cant_settle", headline:
+              "Could not read this item's reviews right now.",
+            risk: "", size_note: "", key_quote: null, evidence_strength: "thin",
+          } as Verdict,
+        };
+      }
+    }));
+    setProg({ steps, current: reviewStep + 1 });
+    const order = { looks_safe: 0, has_risks: 1, reviews_cant_settle: 2 };
+    results.sort((a, b) =>
+      order[a.verdict.safety] - order[b.verdict.safety] ||
+      b.product.reviews.length - a.product.reviews.length);
+    setRanked(results);
+    setProg(null);
+  }
+
+  async function goSelected() {
+    setError(""); setRanked(null);
+    const chosen = demos.filter((d) => selected.has(d.style_id));
+    if (!chosen.length) { setError("Tap a few items first."); return; }
+    await run(chosen,
+      [`Reading buyer reviews for ${chosen.length} items at once`,
+       "Ranking them, safest first"], 0);
+  }
+
+  async function goLinks() {
+    setError(""); setRanked(null);
+    const lines = urls.split("\n").map((l) => l.trim()).filter(Boolean).slice(0, 5);
+    if (!lines.length) { setError("Paste at least one Myntra product link."); return; }
+    const steps = [
+      `Fetching ${lines.length} item${lines.length > 1 ? "s" : ""} from Myntra, one by one`,
+      "Reading buyer reviews for each item",
+      "Ranking them, safest first"];
+    try {
+      setProg({ steps, current: 0 });
+      const products: Product[] = [];
+      for (const line of lines) {
+        try { products.push(await post<Product>("/api/product", { url: line })); }
+        catch { /* skip items that cannot be fetched */ }
+      }
+      if (!products.length) {
+        throw new Error("None of those links could be fetched. Myntra may be blocking automated visits right now. The sample items always work.");
+      }
+      await run(products, steps, 1);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Something went wrong.");
+      setProg(null);
+    }
+  }
+
+  const counts = ranked
+    ? ranked.reduce<Record<string, number>>((acc, r) => {
+        acc[r.verdict.safety] = (acc[r.verdict.safety] ?? 0) + 1; return acc;
+      }, {})
+    : {};
+  const summaryWord: Record<string, string> = {
+    looks_safe: "safe to buy", has_risks: "with real risks",
+    reviews_cant_settle: "unsettled",
+  };
+
+  return (
+    <div>
+      <p className="small">
+        Tap items to build a wishlist (up to five), then rank it.
+      </p>
+      <PickGrid demos={demos} selected={selected} toggle={toggle} />
+      <button className="btn" onClick={goSelected} disabled={!!prog || selected.size === 0}>
+        {`Rank ${selected.size || "my"} item${selected.size !== 1 ? "s" : ""}`}
+      </button>
+      <div className="live-panel">
+        <div className="live-head">
+          <span className="live-badge">Live</span>
+          Or rank your own real wishlist
+        </div>
+        <div className="sub">
+          Open Myntra, copy the links of items you have saved, and paste them
+          here. One per line, up to five. They are fetched live from
+          myntra.com, reviews and all. Not samples.
+        </div>
+        <textarea rows={3} value={urls}
+          placeholder={"https://www.myntra.com/…/31034107/buy\nhttps://www.myntra.com/…/33720581/buy"}
+          onChange={(e) => setUrls(e.target.value)} />
+        <button className="btn" style={{ marginTop: 12 }}
+          onClick={goLinks} disabled={!!prog}>
+          Fetch & rank my real items
+        </button>
+      </div>
+      <ProgressCard prog={prog} />
+      {error && <div className="error-box">{error}</div>}
+      {ranked && (
+        <div className="reveal" style={{ marginTop: 22 }}>
+          <p>
+            <strong>{ranked.length} item{ranked.length > 1 ? "s" : ""}, safest first</strong>
+            {": "}
+            {Object.entries(summaryWord)
+              .filter(([k]) => counts[k])
+              .map(([k, w]) => `${counts[k]} ${w}`)
+              .join(", ")}.
+          </p>
+          {ranked.map(({ product: p, verdict: v }, i) => (
+            <div className="card" key={p.style_id}>
+              <div className="card-flex">
+                <Thumb p={p} />
+                <div style={{ minWidth: 0 }}>
+                  <div style={{ display: "flex", gap: 12, alignItems: "baseline", flexWrap: "wrap" }}>
+                    <h3>{i + 1}. {p.brand}: {p.name.slice(0, 60)}</h3>
+                    <span className={`badge ${SAFETY[v.safety].cls}`}>{SAFETY[v.safety].label}</span>
+                  </div>
+                  <MetaLine p={p} />
+                  <p style={{ marginTop: 10 }}>{v.headline}</p>
+                  {v.risk && <p style={{ marginTop: 6 }}>⚠️ {v.risk}</p>}
+                  {v.size_note && <p style={{ marginTop: 6 }}>📏 {v.size_note}</p>}
+                  {v.key_quote && (
+                    <blockquote>
+                      “{v.key_quote.text}”<span className="who">buyer review</span>
+                    </blockquote>
+                  )}
+                  {v.evidence_strength === "thin" && (
+                    <p className="muted">Thin evidence: few usable reviews.</p>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+          <p className="muted">
+            Ranked only by what buyer reviews show. For any single item, use
+            the deep answer above.
+          </p>
         </div>
       )}
     </div>

@@ -1,7 +1,7 @@
 import MvpApp from "@/components/MvpApp";
 import demos from "@/lib/demo_items.json";
 
-export const metadata = { title: "Worth a look? — the prototype" };
+export const metadata = { title: "Worth a look? | the prototype" };
 
 export default function MvpPage() {
   return (
@@ -26,7 +26,7 @@ export default function MvpPage() {
       <p className="muted" style={{ marginTop: 26 }}>
         A research prototype. Sample items are real Myntra products; pasted
         links are fetched live, and Myntra sometimes blocks automated
-        fetching — the samples always work. Every quote is verbatim,
+        fetching. The samples always work. Every quote is word for word,
         machine-checked against the fetched review text.
       </p>
     </>
