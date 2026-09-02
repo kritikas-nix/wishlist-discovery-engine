@@ -250,6 +250,26 @@ blockquote .who { display: block; font-style: normal; font-size: 13px; color: va
 }
 .pcard .info .pr { font-size: 12.5px; color: var(--ink-soft); margin-top: 3px; }
 
+/* ---- live-link panel ---- */
+.live-panel {
+  border: 2px solid var(--berry); border-radius: 16px;
+  background: linear-gradient(180deg, rgba(165,35,64,0.05), rgba(165,35,64,0.02));
+  padding: 20px 22px; margin: 22px 0 8px;
+}
+.live-panel .live-head {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 6px;
+  font-family: var(--serif); font-weight: 600; font-size: 19px;
+}
+.live-badge {
+  font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em;
+  color: #fff; background: var(--berry); border-radius: 999px;
+  padding: 3px 10px; text-transform: uppercase;
+}
+.live-panel .sub { font-size: 14.5px; color: var(--ink-soft); margin-bottom: 12px; }
+.live-panel textarea, .live-panel input[type="text"] {
+  font-size: 16px; padding: 15px 17px; border-color: rgba(165,35,64,0.35);
+}
+
 .thumb {
   width: 74px; aspect-ratio: 3/4; border-radius: 10px; overflow: hidden;
   background: var(--paper-deep); flex-shrink: 0;

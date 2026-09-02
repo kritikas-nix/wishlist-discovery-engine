@@ -126,7 +126,6 @@ function MetaLine({ p }: { p: Product }) {
 function WishlistMode({ demos }: { demos: Product[] }) {
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [urls, setUrls] = useState("");
-  const [showPaste, setShowPaste] = useState(false);
   const [phase, setPhase] = useState("");
   const [error, setError] = useState("");
   const [ranked, setRanked] = useState<{ product: Product; verdict: Verdict }[] | null>(null);
@@ -208,25 +207,28 @@ function WishlistMode({ demos }: { demos: Product[] }) {
         Tap items to build a wishlist (up to five), then rank it.
       </p>
       <PickGrid demos={demos} selected={selected} toggle={toggle} />
-      <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
-        <button className="btn" onClick={goSelected} disabled={!!phase || selected.size === 0}>
-          {phase ? <><span className="spin" />{phase}</> :
-            `Rank ${selected.size || "my"} item${selected.size !== 1 ? "s" : ""}`}
-        </button>
-        <button className="chip" type="button"
-          onClick={() => setShowPaste((v) => !v)}>
-          …or paste your own Myntra links
+      <button className="btn" onClick={goSelected} disabled={!!phase || selected.size === 0}>
+        {phase ? <><span className="spin" />{phase}</> :
+          `Rank ${selected.size || "my"} item${selected.size !== 1 ? "s" : ""}`}
+      </button>
+      <div className="live-panel">
+        <div className="live-head">
+          <span className="live-badge">Live</span>
+          Or rank your own real wishlist
+        </div>
+        <div className="sub">
+          Open Myntra, copy the links of items you have saved, and paste them
+          here — one per line, up to five. They are fetched live from
+          myntra.com, reviews and all. Not samples.
+        </div>
+        <textarea rows={3} value={urls}
+          placeholder={"https://www.myntra.com/…/31034107/buy\nhttps://www.myntra.com/…/33720581/buy"}
+          onChange={(e) => setUrls(e.target.value)} />
+        <button className="btn" style={{ marginTop: 12 }}
+          onClick={goLinks} disabled={!!phase}>
+          {phase ? <><span className="spin" />{phase}</> : "Fetch & rank my real items"}
         </button>
       </div>
-      {showPaste && (
-        <div style={{ marginTop: 12 }}>
-          <textarea rows={3} value={urls}
-            placeholder={"https://www.myntra.com/…/31034107/buy — one per line"}
-            onChange={(e) => setUrls(e.target.value)} />
-          <button className="btn ghost" style={{ marginTop: 10 }}
-            onClick={goLinks} disabled={!!phase}>Fetch & rank pasted links</button>
-        </div>
-      )}
       {error && <div className="error-box">{error}</div>}
       {ranked && (
         <div className="reveal" style={{ marginTop: 22 }}>
@@ -318,12 +320,22 @@ function BriefMode({ demos }: { demos: Product[] }) {
 
   return (
     <div>
-      <p className="small">Pick one item — or paste a link — and say your doubt.</p>
+      <p className="small">Pick one item — or paste a live link — and say your doubt.</p>
       <PickGrid demos={demos} selected={selectedSet}
         toggle={(id) => { setPicked(id); setUrl(""); }} />
-      <input type="text" value={url}
-        placeholder="…or paste a Myntra product link"
-        onChange={(e) => setUrl(e.target.value)} />
+      <div className="live-panel">
+        <div className="live-head">
+          <span className="live-badge">Live</span>
+          Or any item on Myntra, right now
+        </div>
+        <div className="sub">
+          Paste any myntra.com product link — it is fetched live with its
+          real buyer reviews.
+        </div>
+        <input type="text" value={url}
+          placeholder="https://www.myntra.com/dresses/brand/…/31034107/buy"
+          onChange={(e) => setUrl(e.target.value)} />
+      </div>
       <div className="choices">
         {Object.entries(DOUBTS).map(([k, label]) => (
           <button key={k} className={`chip${doubt === k ? " on" : ""}`}
