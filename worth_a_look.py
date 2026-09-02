@@ -141,15 +141,125 @@ def run_brief(product, doubt_key):
 
 st.title("Worth a look?")
 st.markdown(
-    "That item has been sitting in your wishlist for a reason. Paste it "
-    "here, say what is holding you back, and get a straight answer built "
-    "only from what real buyers wrote in its reviews. No pushing, no "
-    "invented claims. When the reviews do not settle it, this says so.")
+    "Those items have been sitting in your wishlist for a reason. Paste "
+    "them here and get straight answers built only from what real buyers "
+    "wrote in their reviews: your whole list ranked by how safe each item "
+    "is to buy, or one item examined in depth. No pushing, no invented "
+    "claims. When the reviews do not settle it, this says so.")
+
+SAFETY_BADGE = {
+    "looks_safe": ("🟢", "Looks safe to buy"),
+    "has_risks": ("🟠", "Has real risks"),
+    "reviews_cant_settle": ("⚪", "Reviews can't settle it"),
+}
+
+
+def run_wishlist(products):
+    from concurrent.futures import ThreadPoolExecutor
+    progress = st.progress(0.0, text="Reading reviews for each item...")
+    results = []
+    with ThreadPoolExecutor(max_workers=3) as pool:
+        futures = {pool.submit(mvp_engine.make_verdict, p): p
+                   for p in products}
+        done = 0
+        for fut, p in list(futures.items()):
+            try:
+                results.append({"product": p, "verdict": fut.result()})
+            except Exception:
+                results.append({"product": p, "verdict": {
+                    "safety": "reviews_cant_settle",
+                    "headline": "Could not read this item's reviews "
+                                "right now.",
+                    "risk": "", "size_note": "", "key_quote": None,
+                    "evidence_strength": "thin"}})
+            done += 1
+            progress.progress(done / len(futures),
+                              text=f"Read {done} of {len(futures)} items")
+    progress.empty()
+
+    ranked = mvp_engine.rank_wishlist(results)
+    counts = {}
+    for rv in ranked:
+        counts[rv["verdict"]["safety"]] = \
+            counts.get(rv["verdict"]["safety"], 0) + 1
+    summary_word = {"looks_safe": "safe to buy", "has_risks":
+                    "with real risks", "reviews_cant_settle": "unsettled"}
+    bits = [f"{counts[k]} {summary_word[k]}"
+            for k in summary_word if counts.get(k)]
+    st.markdown(f"**Your {len(ranked)} saved items, safest first** "
+                f"— {', '.join(bits)}.")
+
+    for i, rv in enumerate(ranked, 1):
+        p, v = rv["product"], rv["verdict"]
+        dot, label = SAFETY_BADGE[v["safety"]]
+        box = st.container(border=True)
+        with box:
+            st.markdown(
+                f"**{i}. {dot} {p['brand']} — {p['name'][:70]}**  \n"
+                f"{label} · {p['price']} · "
+                f"{len(p['reviews'])} reviews read · "
+                f"[view on Myntra]({p['url']})")
+            st.markdown(v.get("headline", ""))
+            if v.get("risk"):
+                st.markdown(f"⚠️ {v['risk']}")
+            if v.get("size_note"):
+                st.markdown(f"📏 {v['size_note']}")
+            if v.get("key_quote"):
+                st.markdown(f"> “{v['key_quote']['text']}” — buyer review")
+            if v.get("evidence_strength") == "thin":
+                st.caption("Thin evidence: few usable reviews on this item.")
+    st.caption("Ranked only by what buyer reviews show: consistent praise "
+               "ranks above repeated complaints, and items whose reviews "
+               "answer nothing rank last. For any item, get the full brief "
+               "in the 'One item in depth' tab.")
+
 
 demos = demo_items()
-tab_link, tab_demo = st.tabs(["Paste a Myntra link", "Try a sample item"])
+tab_list, tab_link, tab_demo = st.tabs(
+    ["Rank my wishlist", "One item in depth", "Sample items"])
+
+with tab_list:
+    st.markdown(
+        "Paste up to five saved items, one link per line. Each item's "
+        "buyer reviews get read, then your list comes back ranked: safest "
+        "buy first, real risks flagged, unanswerable ones called out.")
+    urls_text = st.text_area(
+        "Your saved items", height=120,
+        placeholder="https://www.myntra.com/…/31034107/buy\n"
+                    "https://www.myntra.com/…/33720581/buy")
+    c1, c2 = st.columns([1, 1])
+    go_list = c1.button("Rank my items", type="primary")
+    go_demo_list = c2.button("Rank the 3 sample items instead") if demos \
+        else False
+    if go_list:
+        sids = []
+        for line in urls_text.splitlines():
+            sid = mvp_engine.extract_style_id(line)
+            if sid and sid not in sids:
+                sids.append(sid)
+        if not sids:
+            st.error("No Myntra product links found. One link per line, "
+                     "each containing /…/buy or /reviews/… with a number.")
+        else:
+            sids = sids[:5]
+            products = []
+            fetch_bar = st.progress(
+                0.0, text=f"Fetching {len(sids)} items from Myntra...")
+            for i, sid in enumerate(sids, 1):
+                try:
+                    products.append(cached_fetch(sid))
+                except Exception:
+                    st.warning(f"Could not fetch item {sid}; skipping it.")
+                fetch_bar.progress(i / len(sids),
+                                   text=f"Fetched {i} of {len(sids)}")
+            fetch_bar.empty()
+            if products:
+                run_wishlist(products)
+    if go_demo_list:
+        run_wishlist(demos)
 
 with tab_link:
+    st.markdown("One item, one doubt, and the full evidence brief on it.")
     url = st.text_input(
         "Myntra product link",
         placeholder="https://www.myntra.com/dresses/brand/…/31034107/buy")

@@ -177,6 +177,76 @@ def verify_quotes(brief, product):
     return brief
 
 
+VERDICT_SAFETIES = ("looks_safe", "has_risks", "reviews_cant_settle")
+
+
+def build_verdict_prompt(product):
+    reviews_block = "\n".join(
+        f'[{i + 1}] rating={r.get("rating", "?")} :: '
+        + str(r["text"]).strip()[:300]
+        for i, r in enumerate(product["reviews"]))
+    return f"""You are ranking items in an online shopper's wishlist by how safe each is
+to buy, using ONLY that item's real buyer reviews. Be the careful friend:
+grounded, honest, never pushy. "The reviews cannot settle it" is a valid
+verdict.
+
+ITEM: {product['brand']} - {product['name']} - price {product['price']}
+Average rating: {product['rating']} from {product['rating_count']} ratings.
+
+BUYER REVIEWS ({len(product['reviews'])} total):
+{reviews_block}
+
+Return ONLY a JSON object, no fences:
+{{
+  "safety": "looks_safe" | "has_risks" | "reviews_cant_settle",
+  "headline": "<one sentence: the single most decision-relevant fact from
+    these reviews>",
+  "risk": "<the main risk a buyer should know, one sentence, or empty
+    string if none surfaced>",
+  "size_note": "<one short sentence on sizing if reviews mention it,
+    else empty string>",
+  "key_quote": {{"n": <review number>, "text": "<the single most useful
+    verbatim quote, max 25 words>"}},
+  "evidence_strength": "strong" | "thin"
+}}
+
+"looks_safe" needs consistent positive evidence with no repeated complaint.
+"has_risks" means a concrete repeated problem (sizing, quality, colour).
+"reviews_cant_settle" means too few or too vague reviews. Never invent."""
+
+
+def make_verdict(product):
+    """Compact per-item verdict for the wishlist ranking view."""
+    import anthropic
+    client = anthropic.Anthropic()
+    resp = client.messages.create(
+        model=BRIEF_MODEL,
+        max_tokens=1000,
+        messages=[{"role": "user",
+                   "content": build_verdict_prompt(product)}],
+    )
+    text = "".join(b.text for b in resp.content if b.type == "text")
+    v = parse_brief(text)
+    if v.get("safety") not in VERDICT_SAFETIES:
+        v["safety"] = "reviews_cant_settle"
+    # the no-invention rule, applied to the quote
+    q = v.get("key_quote") or {}
+    texts = " ||| ".join(str(r["text"]) for r in product["reviews"]).lower()
+    qt = str(q.get("text") or "").strip()
+    if not qt or qt.lower().strip('."’“” ') not in texts:
+        v["key_quote"] = None
+    return v
+
+
+def rank_wishlist(verdicts):
+    """Order: safest first, unsettled last; more reviews break ties."""
+    order = {"looks_safe": 0, "has_risks": 1, "reviews_cant_settle": 2}
+    return sorted(
+        verdicts,
+        key=lambda pv: (order.get(pv["verdict"]["safety"], 3),
+                        -len(pv["product"]["reviews"])))
+
+
 def make_brief(product, doubt_key):
     import anthropic
     client = anthropic.Anthropic()
