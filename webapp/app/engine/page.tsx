@@ -38,6 +38,29 @@ export default function EnginePage() {
           finding is what the prototype is built to fix.
         </div>
 
+        <div className="kpi-row">
+          <div className="kpi-card">
+            <div className="knum">{corpus.total_tagged.toLocaleString()}</div>
+            <div className="klbl">Conversations read</div>
+            <div className="ksub">Play Store, Reddit, Myntra reviews, YouTube</div>
+          </div>
+          <div className="kpi-card">
+            <div className="knum">{relN}</div>
+            <div className="klbl">Purchase decisions found</div>
+            <div className="ksub">after strict filtering of complaints and noise</div>
+          </div>
+          <div className="kpi-card">
+            <div className="knum accent">#1</div>
+            <div className="klbl">Blocker: trust</div>
+            <div className="ksub">76 of {relN} cannot trust the photos, reviews or seller</div>
+          </div>
+          <div className="kpi-card">
+            <div className="knum accent">4:1</div>
+            <div className="klbl">Product vs self doubt</div>
+            <div className="ksub">the missing piece is item information, not styling advice</div>
+          </div>
+        </div>
+
         <div className="steps-strip">
           <div className="step-card">
             <div className="num">1</div>

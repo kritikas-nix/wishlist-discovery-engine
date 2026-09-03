@@ -21,6 +21,32 @@ export default function MvpPage() {
             it says so.
           </div>
         </div>
+        <div className="props-row">
+          <div className="prop-card">
+            <div className="ic">📖</div>
+            <div className="pt">Reads every review for you</div>
+            <div className="pd">
+              Dozens of real buyer reviews, fetched and read in under a
+              minute. The homework you keep postponing, done.
+            </div>
+          </div>
+          <div className="prop-card">
+            <div className="ic">🎯</div>
+            <div className="pt">Answers your exact doubt</div>
+            <div className="pd">
+              Size, quality, worth the price, or photos vs reality. You pick
+              the question; the evidence answers it.
+            </div>
+          </div>
+          <div className="prop-card">
+            <div className="ic">🤝</div>
+            <div className="pt">Honest by design</div>
+            <div className="pd">
+              Every quote is word for word and machine checked. When the
+              reviews cannot settle it, it tells you that too.
+            </div>
+          </div>
+        </div>
       </section>
       <MvpApp demos={demos as never} />
       <p className="muted" style={{ marginTop: 26 }}>
