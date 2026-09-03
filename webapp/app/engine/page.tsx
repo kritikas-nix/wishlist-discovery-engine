@@ -52,7 +52,7 @@ export default function EnginePage() {
           <div className="kpi-card">
             <div className="knum accent">#1</div>
             <div className="klbl">Blocker: trust</div>
-            <div className="ksub">76 of {relN} cannot trust the photos, reviews or seller</div>
+            <div className="ksub">106 of {relN} cannot trust the photos, reviews or seller</div>
           </div>
           <div className="kpi-card">
             <div className="knum accent">4:1</div>
@@ -116,8 +116,8 @@ export default function EnginePage() {
         />
         <div className="takeaway">
           <strong>Takeaway:</strong> the biggest blocker is not price. It is
-          not being able to trust the photos, reviews or seller (76 of 243).
-          Money doubts come second, size doubts fourth.
+          not being able to trust the photos, reviews or seller (106 of 427).
+          Worth-the-money doubts come a close second, size doubts third.
         </div>
       </section>
 
@@ -146,8 +146,8 @@ export default function EnginePage() {
         </div>
         <div className="takeaway">
           <strong>Takeaway:</strong> doubts about the product outnumber doubts
-          about oneself 118 to 29, four to one. The missing piece is
-          believable information about the item, not body-fit advice.
+          about oneself 172 to 38, more than four to one. The missing piece
+          is believable information about the item, not body-fit advice.
         </div>
       </section>
 
@@ -168,7 +168,7 @@ export default function EnginePage() {
         />
         <div className="takeaway">
           <strong>Takeaway:</strong> the most common workaround is checking
-          the same item on a rival app (45 of 243). The decision is being
+          the same item on a rival app (53 of 427). The decision is being
           made off Myntra, where Myntra can lose it.
         </div>
       </section>

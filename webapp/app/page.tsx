@@ -21,7 +21,7 @@ export default function Home() {
             problem was not given. It had to be found.
           </div>
           <div>
-            1,309 public conversations, 16 real wishlists, one working
+            3,183 public conversations, 16 real wishlists, one working
             prototype. Every number carries its n.
           </div>
         </div>
@@ -51,7 +51,7 @@ export default function Home() {
           </div>
           <div className="stat">
             <div className="n">#1</div>
-            <div className="lbl">blocker: can&apos;t trust the photos, reviews or seller (76 of 243)</div>
+            <div className="lbl">blocker: can&apos;t trust the photos, reviews or seller (106 of 427)</div>
           </div>
           <div className="stat">
             <div className="n">{uncertainty.about_product}:{uncertainty.about_self}</div>

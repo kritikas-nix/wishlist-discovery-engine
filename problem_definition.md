@@ -11,9 +11,9 @@ lot for unresolved doubt.
 ## Target segment
 
 Wishlist users with purchase intent: people who save items planning or
-seriously considering buying them (survey: 6 of 14 respondents describe their
-wishlist use as "planning to buy soon", another 4 as "a mix"). Age 19–30 in
-our sample, students and early-career working shoppers, buying mid-range
+seriously considering buying them (survey: 7 of 16 respondents describe their
+wishlist use as "planning to buy soon", another 5 as "a mix"). Ages 19 to 30
+in the survey, up to 35 in the follow-up calls; students and working shoppers, buying mid-range
 fashion (₹500–6,000 items in their actual wishlists).
 
 ## The product outcome to influence
@@ -28,13 +28,14 @@ evidence puts the binding leak at Confidence.
 The information needed to commit is not credible or not personal enough at
 the point of decision:
 
-- Engine (n=243 relevant public items): the top blocker is distrust of the
-  seller, photos or reviews (76), ahead of worth-the-money doubt (48),
-  quality doubt (34) and size doubt (31). Doubts about the product's
-  information outnumber doubts about oneself 118 to 29.
-- Survey (n=14, 33 item-anchored answers): the same doubt expressed
-  personally — "not sure it would suit me" (11), quality (9), worth the
-  price (9), size (8). Asked what one guaranteed-true fact they would want,
+- Engine (n=427 relevant public items, from 3,183 collected): the top
+  blocker is distrust of the seller, photos or reviews (106), with
+  worth-the-money doubt a close second (99), then size (53) and quality
+  (42). Doubts about the product's information outnumber doubts about
+  oneself 172 to 38.
+- Survey (n=16, 39 item-anchored answers): the same doubt expressed
+  personally, "not sure it would suit me" (12), quality (10), worth the
+  price (10), size (8). Asked what one guaranteed-true fact they would want,
   respondents wrote: "Will this still feel worth the money after six
   months", "What is the biggest reason I might regret buying this",
   "size is accurate or not", "Does it have polyester".
@@ -45,12 +46,12 @@ the point of decision:
 ## Existing workarounds (evidence the need is real)
 
 Users already do the work our solution automates, manually and off-platform:
-- Engine: checking the same item on another app is the most common invented
-  workaround (45 of 243); reading low-star reviews specifically (180
-  mention no workaround, making this the largest named one).
-- Survey: 9 of 14 read low-star reviews, 8 check other buyers' photos,
-  6 screenshot to a friend or family member, 5 check the item on a rival
-  app, 4 measure against a garment they own.
+- Engine: checking the same item on another app is the most common named
+  workaround (53 of 427; most items mention no workaround at all, which is
+  counted honestly rather than guessed).
+- Survey: 10 of 16 screenshot to a friend or family member, 9 check other
+  buyers' photos, 8 read low-star reviews specifically, 4 measure against
+  a garment they own, 3 check the item on a rival app.
 Every workaround is an attempt to obtain one credible answer. Each one takes
 the user off Myntra at the exact moment they were closest to buying.
 
@@ -79,16 +80,19 @@ Return x Reconsider x Confidence x Complete → engine located the leak at
 Confidence and split doubt into about-product vs about-self (4:1
 about-product, led by trust) → survey on real wishlists confirmed the
 doubt-shape and personalised it (suit ME, worth MY money), while testing
-and weakening the rival hypothesis (forgotten items: only 4 of 14 had
-completely forgotten their bottom item; "I forgot" ticked twice in 33
-item answers even though the option existed) → problem defined as
+and weakening the rival hypothesis (forgotten items: 6 of 16 had
+completely forgotten their bottom item; "I forgot" ticked 5 times in 39
+item answers, far behind the doubt blockers) → problem defined as
 credibility-of-information at the decision moment → MVP answers the
 shopper's stated doubt from verbatim buyer evidence.
 
 ## Honest limits
 
-Survey n=14 (raw counts only); its blocker list has no explicit "don't
-trust" option, so the trust framing rests on the engine and free text.
+Survey n=16 (raw counts only); its blocker list has no explicit "don't
+trust" option, so the trust framing rests on the engine, free text, and
+the calls (Caller 2: "what photos show and what gets delivered are two
+different stories").
 Public feedback over-represents complainers. Self-reported behaviour is
-not observed behaviour. The follow-up call channel exists (one opt-in) for
-depth. None of these limits change the direction all sources point.
+not observed behaviour. Three follow-up calls were completed; all three
+callers tested the prototype live on their own wishlist items. None of
+these limits change the direction all sources point.

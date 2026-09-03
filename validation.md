@@ -29,7 +29,7 @@ Two consequences, stated honestly:
 
 1. The relevant pool (n=243) is somewhat overcounted, and since several of
    the over-included items carry trust-of-platform language, the top
-   blocker's count (trust, 76 of 243) is likely a few items generous.
+   blocker's count (trust) is likely a few items generous.
    The finding itself survives: even discounting every audited
    over-inclusion, trust-shaped doubt stays the largest blocker, and the
    survey's free-text answers point the same way independently.

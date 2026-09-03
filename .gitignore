@@ -8,3 +8,4 @@ collect_run.log
 data/survey_responses.csv
 data/survey_findings.json
 .serena/
+calls_notes.md

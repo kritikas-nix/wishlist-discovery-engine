@@ -1,41 +1,41 @@
 {
-  "generated_at": "2026-08-31 14:24",
+  "generated_at": "2026-09-03 15:45",
   "denominator_note": "Blocker analysis counts only relevance in ['deferred_purchase', 'purchase_decision']. post_purchase and irrelevant are excluded from every blocker figure and reported only in corpus counts.",
   "corpus": {
-    "total_tagged": 1309,
+    "total_tagged": 3183,
     "by_source": {
-      "play_store": 635,
-      "youtube_comment": 326,
-      "myntra_reviews": 218,
-      "reddit_comment": 92,
-      "reddit_post": 38
+      "play_store": 1649,
+      "youtube_comment": 521,
+      "myntra_reviews": 843,
+      "reddit_post": 44,
+      "reddit_comment": 126
     },
     "by_relevance": {
-      "irrelevant": 601,
-      "purchase_decision": 229,
-      "post_purchase": 465,
-      "deferred_purchase": 14
+      "irrelevant": 1381,
+      "purchase_decision": 406,
+      "post_purchase": 1375,
+      "deferred_purchase": 21
     },
-    "relevant_n": 243
+    "relevant_n": 427
   },
   "blockers": {
-    "n": 243,
-    "items_with_blocker": 243,
+    "n": 427,
+    "items_with_blocker": 426,
     "overall": {
-      "price_absolute": 16,
-      "quality_material": 34,
-      "returns_friction": 4,
-      "price_worth": 48,
-      "trust_platform": 76,
-      "social_validation": 14,
-      "fit_size": 31,
-      "suitability_on_me": 10,
-      "stock_unavailable": 9,
-      "none_stated": 40,
-      "waiting_sale": 5,
-      "decision_overload": 12,
+      "quality_material": 42,
+      "returns_friction": 13,
+      "price_worth": 99,
+      "trust_platform": 106,
+      "stock_unavailable": 16,
+      "fit_size": 53,
+      "none_stated": 91,
+      "suitability_on_me": 9,
+      "waiting_sale": 17,
+      "price_absolute": 24,
+      "social_validation": 13,
+      "decision_overload": 18,
       "forgot_never_returned": 1,
-      "waiting_occasion": 1
+      "waiting_occasion": 3
     },
     "labels": {
       "fit_size": "Unsure of size or measurements",
@@ -56,201 +56,226 @@
   },
   "blockers_by_uncertainty": {
     "about_context": {
-      "n": 55,
+      "n": 130,
       "blockers": {
-        "price_absolute": 15,
-        "returns_friction": 2,
-        "trust_platform": 14,
-        "waiting_sale": 5,
-        "price_worth": 19,
+        "returns_friction": 11,
+        "trust_platform": 29,
+        "waiting_sale": 17,
+        "price_worth": 55,
+        "price_absolute": 23,
         "stock_unavailable": 1,
-        "decision_overload": 2,
+        "decision_overload": 5,
         "social_validation": 1,
-        "waiting_occasion": 1
+        "waiting_occasion": 2,
+        "none_stated": 1,
+        "fit_size": 1
       }
     },
     "about_product": {
-      "n": 118,
+      "n": 172,
       "blockers": {
-        "quality_material": 34,
-        "price_worth": 28,
-        "trust_platform": 54,
-        "social_validation": 6,
-        "fit_size": 16,
-        "stock_unavailable": 5,
-        "none_stated": 9,
+        "quality_material": 42,
+        "price_worth": 43,
+        "trust_platform": 71,
+        "stock_unavailable": 9,
+        "none_stated": 15,
+        "fit_size": 29,
         "returns_friction": 2,
+        "social_validation": 3,
         "decision_overload": 5,
         "price_absolute": 1,
         "suitability_on_me": 1
       }
     },
     "about_self": {
-      "n": 29,
+      "n": 38,
       "blockers": {
-        "trust_platform": 2,
-        "suitability_on_me": 9,
-        "fit_size": 15,
-        "decision_overload": 5,
+        "fit_size": 23,
+        "suitability_on_me": 8,
+        "decision_overload": 8,
         "forgot_never_returned": 1,
-        "social_validation": 7
+        "social_validation": 9,
+        "trust_platform": 1,
+        "waiting_occasion": 1
       }
     },
     "not_applicable": {
-      "n": 41,
+      "n": 87,
       "blockers": {
-        "none_stated": 31,
+        "none_stated": 75,
         "price_worth": 1,
-        "stock_unavailable": 3,
-        "trust_platform": 6
+        "stock_unavailable": 6,
+        "trust_platform": 5
       }
     }
   },
   "blockers_by_intent": {
     "bookmark": {
-      "n": 2,
+      "n": 4,
       "blockers": {
         "suitability_on_me": 1,
-        "stock_unavailable": 1
+        "stock_unavailable": 1,
+        "waiting_sale": 2
       }
     },
     "compare": {
-      "n": 40,
+      "n": 39,
       "blockers": {
-        "trust_platform": 15,
-        "quality_material": 12,
+        "trust_platform": 16,
+        "quality_material": 9,
         "none_stated": 4,
-        "price_worth": 13,
-        "price_absolute": 2,
-        "decision_overload": 6,
-        "fit_size": 5
+        "price_worth": 11,
+        "price_absolute": 3,
+        "decision_overload": 5,
+        "fit_size": 4,
+        "social_validation": 2,
+        "waiting_occasion": 1,
+        "returns_friction": 1
+      }
+    },
+    "declutter": {
+      "n": 1,
+      "blockers": {
+        "trust_platform": 1
       }
     },
     "intent_to_buy": {
-      "n": 49,
+      "n": 139,
       "blockers": {
-        "price_worth": 3,
-        "trust_platform": 4,
-        "quality_material": 3,
-        "none_stated": 27,
-        "fit_size": 5,
-        "price_absolute": 3,
-        "stock_unavailable": 5,
-        "decision_overload": 2,
+        "price_worth": 14,
+        "trust_platform": 12,
+        "quality_material": 7,
+        "none_stated": 72,
+        "fit_size": 12,
+        "price_absolute": 7,
+        "stock_unavailable": 10,
+        "decision_overload": 4,
         "forgot_never_returned": 1,
-        "social_validation": 1,
-        "waiting_occasion": 1
+        "social_validation": 2,
+        "waiting_occasion": 2,
+        "waiting_sale": 6,
+        "returns_friction": 4
       }
     },
     "unclear": {
-      "n": 152,
+      "n": 244,
       "blockers": {
-        "price_absolute": 11,
-        "quality_material": 19,
-        "returns_friction": 4,
-        "trust_platform": 57,
-        "social_validation": 13,
-        "fit_size": 21,
-        "suitability_on_me": 9,
-        "price_worth": 32,
-        "stock_unavailable": 3,
-        "none_stated": 9,
-        "waiting_sale": 5,
-        "decision_overload": 4
+        "quality_material": 26,
+        "returns_friction": 8,
+        "trust_platform": 77,
+        "stock_unavailable": 5,
+        "fit_size": 37,
+        "none_stated": 15,
+        "waiting_sale": 9,
+        "price_worth": 74,
+        "price_absolute": 14,
+        "social_validation": 9,
+        "decision_overload": 9,
+        "suitability_on_me": 8
       }
     }
   },
   "blockers_by_source": {
     "myntra_reviews": {
-      "n": 2,
+      "n": 14,
       "blockers": {
-        "none_stated": 1,
-        "stock_unavailable": 1,
-        "fit_size": 1
+        "stock_unavailable": 2,
+        "fit_size": 3,
+        "none_stated": 7,
+        "price_worth": 3,
+        "quality_material": 1
       }
     },
     "play_store": {
-      "n": 57,
+      "n": 161,
       "blockers": {
-        "price_absolute": 3,
-        "returns_friction": 3,
-        "price_worth": 17,
-        "trust_platform": 17,
-        "suitability_on_me": 3,
-        "quality_material": 2,
-        "none_stated": 13,
-        "decision_overload": 2,
+        "returns_friction": 5,
+        "price_worth": 41,
+        "quality_material": 7,
+        "none_stated": 49,
+        "trust_platform": 38,
+        "decision_overload": 7,
         "forgot_never_returned": 1,
-        "waiting_sale": 4,
-        "stock_unavailable": 2
+        "waiting_sale": 13,
+        "suitability_on_me": 2,
+        "stock_unavailable": 7,
+        "price_absolute": 6,
+        "fit_size": 3,
+        "social_validation": 1
       }
     },
     "reddit_comment": {
-      "n": 18,
+      "n": 21,
       "blockers": {
-        "quality_material": 3,
-        "trust_platform": 6,
-        "fit_size": 3,
+        "quality_material": 2,
+        "fit_size": 4,
+        "none_stated": 4,
         "decision_overload": 2,
-        "none_stated": 3,
         "suitability_on_me": 3,
         "social_validation": 1,
-        "waiting_occasion": 1
+        "waiting_occasion": 1,
+        "trust_platform": 7,
+        "stock_unavailable": 1
       }
     },
     "reddit_post": {
-      "n": 6,
+      "n": 7,
       "blockers": {
-        "price_worth": 2,
         "quality_material": 2,
-        "trust_platform": 2,
-        "decision_overload": 2,
-        "fit_size": 2,
+        "trust_platform": 1,
+        "decision_overload": 3,
+        "fit_size": 3,
+        "price_worth": 1,
         "none_stated": 1,
-        "social_validation": 3
+        "social_validation": 5,
+        "waiting_occasion": 1
       }
     },
     "youtube_comment": {
-      "n": 160,
+      "n": 224,
       "blockers": {
-        "quality_material": 27,
-        "trust_platform": 51,
-        "social_validation": 10,
-        "fit_size": 25,
-        "price_worth": 29,
+        "quality_material": 30,
+        "trust_platform": 60,
         "stock_unavailable": 6,
-        "none_stated": 22,
+        "fit_size": 40,
+        "none_stated": 30,
         "suitability_on_me": 4,
-        "waiting_sale": 1,
-        "price_absolute": 13,
-        "returns_friction": 1,
-        "decision_overload": 6
+        "waiting_sale": 4,
+        "price_worth": 54,
+        "price_absolute": 18,
+        "social_validation": 6,
+        "returns_friction": 8,
+        "decision_overload": 6,
+        "waiting_occasion": 1
       }
     }
   },
   "uncertainty_overall": {
-    "about_context": 55,
-    "about_product": 118,
-    "about_self": 29,
-    "not_applicable": 41
+    "about_product": 172,
+    "about_context": 130,
+    "about_self": 38,
+    "not_applicable": 87
   },
   "saving_intent_overall": {
-    "unclear": 152,
-    "intent_to_buy": 49,
-    "compare": 40,
-    "bookmark": 2
+    "unclear": 244,
+    "intent_to_buy": 139,
+    "compare": 39,
+    "bookmark": 4,
+    "declutter": 1
   },
   "workarounds_overall": {
-    "n": 243,
+    "n": 427,
     "counts": {
-      "none": 180,
-      "youtube_search": 5,
-      "competitor_check": 45,
+      "youtube_search": 7,
+      "none": 345,
+      "competitor_check": 53,
       "instagram_search": 4,
-      "order_two_sizes": 2,
-      "ask_friend": 3,
-      "offline_try": 4,
-      "size_chart_compare": 2
+      "order_two_sizes": 4,
+      "ask_friend": 4,
+      "size_chart_compare": 3,
+      "offline_try": 5,
+      "review_photos": 1,
+      "negative_reviews": 3
     },
     "labels": {
       "ask_friend": "Screenshot or share to a person or group chat",
@@ -266,69 +291,22 @@
     }
   },
   "outcome_overall": {
-    "unclear": 144,
-    "still_pending": 43,
-    "abandoned": 38,
-    "bought_elsewhere": 15,
-    "bought_eventually": 3
+    "unclear": 252,
+    "bought_eventually": 6,
+    "still_pending": 79,
+    "bought_elsewhere": 21,
+    "abandoned": 69
   },
   "segment_overall": {
-    "unclear": 242,
-    "student": 1
+    "unclear": 425,
+    "student": 2
   },
   "confidence_overall": {
-    "medium": 154,
-    "low": 32,
-    "high": 57
+    "medium": 257,
+    "low": 83,
+    "high": 87
   },
   "quotes": {
-    "price_absolute": [
-      {
-        "evidence": "Jitna bhi btaye ho sab meri budget se bahar hai",
-        "text": "Jitna bhi btaye ho sab meri budget se bahar hai 🙄",
-        "source": "youtube_comment",
-        "platform": "youtube",
-        "date": "2026-01-12",
-        "url": "https://youtube.com/watch?v=gJmhvusp1HI",
-        "confidence": "high"
-      },
-      {
-        "evidence": "sbko same mt smjho bhai sb itne Ameer nhi h jo brands affords kr ske",
-        "text": "Yrr top 5-6% log h ve jo brands pe hate h or sirf 1-2% log hi h jo foreign brands k liye jate h , sbko same mt smjho bhai sb itne Ameer nhi h jo brands affords kr ske",
-        "source": "youtube_comment",
-        "platform": "youtube",
-        "date": "2025-08-16",
-        "url": "https://youtube.com/watch?v=88nEjSVOG5k",
-        "confidence": "high"
-      },
-      {
-        "evidence": "messho se batvo ye to bohot mahnga hai",
-        "text": "Jiji please messho se batvo ye to bohot mahnga hai 😢",
-        "source": "youtube_comment",
-        "platform": "youtube",
-        "date": "2025-09-10",
-        "url": "https://youtube.com/watch?v=hB2at5QJlJQ",
-        "confidence": "high"
-      },
-      {
-        "evidence": "jacket එකක් oder kre Rs.2400/- tax 😢😢😢 oder එකම එපා වුණා",
-        "text": "Tax fee eka වැඩි 😢😢😢 (jacket එකක් oder kre Rs.2400/- tax 😢😢😢 oder එකම එපා වුණා 😢😢😢",
-        "source": "youtube_comment",
-        "platform": "youtube",
-        "date": "2026-03-20",
-        "url": "https://youtube.com/watch?v=gO2m5h6xGBE",
-        "confidence": "high"
-      },
-      {
-        "evidence": "bohut acha aa app but bohut Price magta hai",
-        "text": "bohut acha aa app but bohut Price magta hai 🥲",
-        "source": "play_store",
-        "platform": "myntra",
-        "date": "2026-08-28 12:47:59",
-        "url": "",
-        "confidence": "high"
-      }
-    ],
     "quality_material": [
       {
         "evidence": "meesho lower & upper portion stitched to make it one, whereas myntra is one piece",
@@ -336,15 +314,6 @@
         "source": "youtube_comment",
         "platform": "youtube",
         "date": "2024-09-16",
-        "url": "https://youtube.com/watch?v=UAGE51XUIZg",
-        "confidence": "high"
-      },
-      {
-        "evidence": "Want to see such review after a few washes",
-        "text": "Want to see such review after a few washes 😂",
-        "source": "youtube_comment",
-        "platform": "youtube",
-        "date": "2024-08-23",
         "url": "https://youtube.com/watch?v=UAGE51XUIZg",
         "confidence": "high"
       },
@@ -367,12 +336,21 @@
         "confidence": "high"
       },
       {
-        "evidence": "How am I supposed to figure how a fabric would look and feel if it's put on a computer generated",
-        "text": "Tata CLiQ is a little better. The most annoying thing on Myntra isn’t even their lack of options, it’s the use of AI models donning the clothes. How am I supposed to figure how a fabric would look and feel if it’s put on a computer generated fake model?! 😫",
+        "evidence": "fit and fabric feel matter most, offline is safer. Online is better for variety but risky for mismatch.",
+        "text": "If fit and fabric feel matter most, offline is safer. Online is better for variety but risky for mismatch. I usually shortlist online first (Ajio, House of Chikankari sometimes for simple cotton styles), then decide if I want to try something similar in-store.",
         "source": "reddit_comment",
-        "platform": "r/TwoXIndia",
-        "date": "2026-02-26",
-        "url": "https://www.reddit.com/r/TwoXIndia/comments/1rf2i7b/unpopular_opinion_a_very_hot_take_myntra_is_very/o7hqxu9/",
+        "platform": "r/IndianFashionAdvice",
+        "date": "2026-04-22",
+        "url": "https://www.reddit.com/r/IndianFashionAdvice/comments/1ss92s1/can_kurti_design_photo_help_in_choosing_better/ohov65t/",
+        "confidence": "high"
+      },
+      {
+        "evidence": "if the material is good definitely 5 star mark my words",
+        "text": "let's see first order...just because of COD options deserve 4 starts if the material is good definitely 5 star mark my words. 🫰🏻",
+        "source": "play_store",
+        "platform": "ajio",
+        "date": "2026-08-31 08:17:11",
+        "url": "",
         "confidence": "high"
       }
     ],
@@ -396,34 +374,34 @@
         "confidence": "high"
       },
       {
-        "evidence": "Please improve the return policy and pay attention to the delivery charges.",
-        "text": "Please improve the return policy and pay attention to the delivery charges.",
+        "evidence": "return aur exchange process ko zaroor check karein. Agar return/exchange important hai",
+        "text": "🚨⚠️❌ Meri personal advice: AJIO se purchase karne se pehle return aur exchange process ko zaroor check karein. Agar return/exchange important hai, to aisi service ke saath order karne se pehle achhi tarah soch lein. Very disappointing experience. AJIO + Shadowfax — return/pickup service needs seriou",
         "source": "play_store",
         "platform": "ajio",
-        "date": "2026-08-28 11:19:05",
+        "date": "2026-08-24 21:55:44",
         "url": "",
-        "confidence": "medium"
+        "confidence": "high"
       },
       {
-        "evidence": "2 same dress lekr krte kya h ya vapis kr dete h",
-        "text": "Ye video k ckkr mai 2 same dress lekr krte kya h ya vapis kr dete h 😂",
+        "evidence": "ajio mai return or exchange nhi de raha agar product damaged agaya toh kaise return karunga",
+        "text": "Bhai ajio se hair dryer lena safe rahega kya qki ajio mai return or exchange nhi de raha agar product damaged agaya toh kaise return karunga ??",
         "source": "youtube_comment",
         "platform": "youtube",
-        "date": "2024-08-29",
-        "url": "https://youtube.com/watch?v=C3OpvA4sSdk",
-        "confidence": "medium"
+        "date": "2025-12-20",
+        "url": "https://youtube.com/watch?v=1dgDXkc-lJ8",
+        "confidence": "high"
+      },
+      {
+        "evidence": "jiske upr return exchange available ho wahi lena h",
+        "text": "Product konsa b le skte h yaa jiske upr return exchange available ho wahi lena h..",
+        "source": "youtube_comment",
+        "platform": "youtube",
+        "date": "2025-08-26",
+        "url": "https://youtube.com/watch?v=9vM3M7iKigQ",
+        "confidence": "high"
       }
     ],
     "price_worth": [
-      {
-        "evidence": "Isase bdhiya toh main footpath wali jeans ki shop se le aau",
-        "text": "Isase bdhiya toh main footpath wali jeans ki shop se le aau",
-        "source": "youtube_comment",
-        "platform": "youtube",
-        "date": "2024-03-20",
-        "url": "https://youtube.com/watch?v=pnKdMmUw7mo",
-        "confidence": "high"
-      },
       {
         "evidence": "google lens the product and you can find the same product sold at amazon, flipkart atlest 20 to 30 percent",
         "text": "They sell their product marked at high prices, just google lens the product and you can find the same product sold at amazon, flipkart, etc. sold atlest 20 to 30 percent less price. They do provide coupons but those only apply to low quality product and charge delivery charge even for Rs 2000 produc",
@@ -431,15 +409,6 @@
         "platform": "nykaafashion",
         "date": "2026-08-19 22:59:11",
         "url": "",
-        "confidence": "high"
-      },
-      {
-        "evidence": "can't find a single good review and it's almost 20K!",
-        "text": "Anyone know about liyokki? They’ve been selling Clio peppiatt dupes recently but can’t find a single good review and it’s almost 20K!",
-        "source": "youtube_comment",
-        "platform": "youtube",
-        "date": "2026-03-15",
-        "url": "https://youtube.com/watch?v=QFEmKtB_IC0",
         "confidence": "high"
       },
       {
@@ -459,27 +428,27 @@
         "date": "2026-04-22",
         "url": "https://www.reddit.com/r/IndianFashionAdvice/comments/1ss92s1/can_kurti_design_photo_help_in_choosing_better/",
         "confidence": "high"
+      },
+      {
+        "evidence": "Sale 2000 ka lower track or sasta bolta hai😂",
+        "text": "Sale 2000 ka lower track or sasta bolta hai😂",
+        "source": "youtube_comment",
+        "platform": "youtube",
+        "date": "2025-12-23",
+        "url": "https://youtube.com/watch?v=gJmhvusp1HI",
+        "confidence": "high"
+      },
+      {
+        "evidence": "meshoo rate is just 639 and myntra one is 1399......so i'll prefer meshoo one more",
+        "text": "Everyone is telling small small differences from both of these dress.🧐....bro but still meshoo rate is just 639 and myntra one is 1399......so i'll prefer meshoo one more😅",
+        "source": "youtube_comment",
+        "platform": "youtube",
+        "date": "2024-08-24",
+        "url": "https://youtube.com/watch?v=UAGE51XUIZg",
+        "confidence": "high"
       }
     ],
     "trust_platform": [
-      {
-        "evidence": "Kisi ne label by divine se buy kiya kya kuch Is it scam or not",
-        "text": "Kisi ne label by divine se buy kiya kya kuch Is it scam or not ??",
-        "source": "youtube_comment",
-        "platform": "youtube",
-        "date": "2026-03-22",
-        "url": "https://youtube.com/watch?v=QFEmKtB_IC0",
-        "confidence": "high"
-      },
-      {
-        "evidence": "No review nothing. Not even showing us the fit.",
-        "text": "What is this?No review nothing.Not even showing us the fit.",
-        "source": "youtube_comment",
-        "platform": "youtube",
-        "date": "2024-02-06",
-        "url": "https://youtube.com/watch?v=pnKdMmUw7mo",
-        "confidence": "high"
-      },
       {
         "evidence": "without expiry date and return how do we purchase any soap , shampoo kind of products",
         "text": "without expiry date and return how do we purchase any soap , shampoo kind of products ?",
@@ -506,65 +475,74 @@
         "date": "2026-08-19 22:59:11",
         "url": "",
         "confidence": "high"
+      },
+      {
+        "evidence": "if you are ordering something from these sketchy websites, make sure you put COD option",
+        "text": "and also, if you are ordering something from these sketchy websites, make sure you put COD option",
+        "source": "youtube_comment",
+        "platform": "youtube",
+        "date": "2023-06-30",
+        "url": "https://youtube.com/watch?v=n4J6vHvEn9E",
+        "confidence": "high"
+      },
+      {
+        "evidence": "when i see a small start up, instantly clicks \"scam\".",
+        "text": "Honestly, when i see a small start up, instantly clicks \"scam\".",
+        "source": "youtube_comment",
+        "platform": "youtube",
+        "date": "2025-08-19",
+        "url": "https://youtube.com/watch?v=88nEjSVOG5k",
+        "confidence": "high"
       }
     ],
-    "social_validation": [
+    "stock_unavailable": [
       {
-        "evidence": "Kisi ne label by divine se buy kiya kya kuch Is it scam or not",
-        "text": "Kisi ne label by divine se buy kiya kya kuch Is it scam or not ??",
+        "evidence": "savana mein sirf women clothing dikha rahe hai mens nhi hai?",
+        "text": "Bhaiya savana mein sirf women clothing dikha rahe hai mens nhi hai?",
         "source": "youtube_comment",
         "platform": "youtube",
-        "date": "2026-03-22",
-        "url": "https://youtube.com/watch?v=QFEmKtB_IC0",
+        "date": "2025-05-15",
+        "url": "https://youtube.com/watch?v=gJmhvusp1HI",
         "confidence": "high"
       },
       {
-        "evidence": "can't find a single good review and it's almost 20K!",
-        "text": "Anyone know about liyokki? They’ve been selling Clio peppiatt dupes recently but can’t find a single good review and it’s almost 20K!",
-        "source": "youtube_comment",
-        "platform": "youtube",
-        "date": "2026-03-15",
-        "url": "https://youtube.com/watch?v=QFEmKtB_IC0",
+        "evidence": "My correct size was completely unavailable (or perpetually sold out), forcing me to order a size adjacent",
+        "text": "Unfortunately, this review is driven by frustration over inventory. My correct size was completely unavailable (or perpetually sold out), forcing me to order a size adjacent to my own just to try the style. As expected, the fit was completely off. The waist was either too tight or too loose, and the",
+        "source": "myntra_reviews",
+        "platform": "jeans",
+        "date": "",
+        "url": "https://www.myntra.com/reviews/35476703",
         "confidence": "high"
       },
       {
-        "evidence": "Which one is better underneat or shapercult? Should I size up for full body shapewear?",
-        "text": "Full body Shapewear recommendations needed.. Hey everyone, I need a full body shapewear recommendation. Which one is better underneat or shapercult? And Should I size up for full body shapewear? I usually wear size XL, so should I order XL or XXL? Also I am so confused. &#32; submitted by &#32; /u/O",
-        "source": "reddit_post",
-        "platform": "r/IndianFashionAdvice",
-        "date": "2026-03-30",
-        "url": "https://www.reddit.com/r/IndianFashionAdvice/comments/1s7k466/full_body_shapewear_recommendations_needed/",
+        "evidence": "if i wishlist something for later it ends up either getting stocked out and never returns back in stock",
+        "text": "prices and cloth ranges are good but if i wishlist something for later it ends up either getting stocked out and never returns back in stock for months",
+        "source": "play_store",
+        "platform": "nykaafashion",
+        "date": "2026-08-18 00:25:38",
+        "url": "",
         "confidence": "high"
       },
       {
-        "evidence": "How is the print quality please let me know",
-        "text": "How is the print quality please let me know",
-        "source": "youtube_comment",
-        "platform": "youtube",
-        "date": "2026-03-26",
-        "url": "https://youtube.com/watch?v=gO2m5h6xGBE",
-        "confidence": "medium"
+        "evidence": "Muuchstac Facewash Not Available I want Muuchstac, I only use Muuchstac",
+        "text": "Muuchstac Facewash Not Available I want Muuchstac,I only use Muuchstac",
+        "source": "play_store",
+        "platform": "ajio",
+        "date": "2026-08-31 15:19:07",
+        "url": "",
+        "confidence": "high"
       },
       {
-        "evidence": "Kisi ne cosmetic hub se kuch buy Kiya hai kya",
-        "text": "Kisi ne cosmetic hub se kuch buy Kiya hai kya",
-        "source": "youtube_comment",
-        "platform": "youtube",
-        "date": "2026-03-14",
-        "url": "https://youtube.com/watch?v=QFEmKtB_IC0",
-        "confidence": "medium"
+        "evidence": "out of stock items comes in stock after 2-3days so should check again and again",
+        "text": "it's nice out of stock items comes in stock after 2-3days so should check again and again",
+        "source": "play_store",
+        "platform": "nykaafashion",
+        "date": "2026-08-10 14:38:22",
+        "url": "",
+        "confidence": "high"
       }
     ],
     "fit_size": [
-      {
-        "evidence": "No review nothing. Not even showing us the fit.",
-        "text": "What is this?No review nothing.Not even showing us the fit.",
-        "source": "youtube_comment",
-        "platform": "youtube",
-        "date": "2024-02-06",
-        "url": "https://youtube.com/watch?v=pnKdMmUw7mo",
-        "confidence": "high"
-      },
       {
         "evidence": "the waist measurements aren't even the waist measurements but below is so confusing",
         "text": "The fact the waist measurements aren't even the waist measurements but below is so confusing",
@@ -600,103 +578,27 @@
         "date": "2026-07-28",
         "url": "https://youtube.com/watch?v=UsTnCO1GrTE",
         "confidence": "high"
-      }
-    ],
-    "suitability_on_me": [
-      {
-        "evidence": "First one is too good but too crop for me bcz of my height",
-        "text": "First one is too good but too crop for me bcz of my height 😢😢😢 Why I'm so long Sometime I hate my height. Can't wear crop and high heels 😢😢",
-        "source": "youtube_comment",
-        "platform": "youtube",
-        "date": "2026-03-04",
-        "url": "https://youtube.com/watch?v=iabxMFFAt7s",
-        "confidence": "high"
       },
       {
-        "evidence": "AI generated models for clothing and makeup.it is ruining expirence as a customer",
-        "text": "good app for shopping but recently the AI generated models for clothing and makeup.it is ruining expirence as a customer",
-        "source": "play_store",
-        "platform": "myntra",
-        "date": "2026-08-29 07:34:38",
-        "url": "",
-        "confidence": "medium"
-      },
-      {
-        "evidence": "any clothing will look good on you only and only when you are fit",
-        "text": "Everyone who's watching this and thinking you should save this for later please consider that any clothing will look good on you only and only when you are fit. So hit gym or other exercises and change your inner look before your outer look.",
+        "evidence": "i have measured my waist at 46 inches and length at 27 inches please help me i don't want to",
+        "text": "i'm super lost i have measured my waist at 46 inches and length at 27 inches using a very accurate measuring tape please help me i don't want to screw up when i buy my new jeans.",
         "source": "youtube_comment",
         "platform": "youtube",
-        "date": "2025-05-19",
-        "url": "https://youtube.com/watch?v=gJmhvusp1HI",
-        "confidence": "medium"
-      },
-      {
-        "evidence": "wide hips like my momma not these skinny boys so jeans always been a struggle",
-        "text": "I was built with that badonkadonk and wide hips like my momma not these skinny boys so jeans always been a struggle for me…",
-        "source": "youtube_comment",
-        "platform": "youtube",
-        "date": "2023-02-19",
+        "date": "2017-09-21",
         "url": "https://youtube.com/watch?v=8hc1pWyD3-g",
-        "confidence": "medium"
-      },
-      {
-        "evidence": "this cool AI feature let's you see what looks best on you in a jiffy",
-        "text": "I am loving this app's try on feature. This cool AI feature let's you see what looks best on you in a jiffy!",
-        "source": "play_store",
-        "platform": "nykaafashion",
-        "date": "2026-08-17 22:58:20",
-        "url": "",
-        "confidence": "medium"
-      }
-    ],
-    "stock_unavailable": [
-      {
-        "evidence": "savana mein sirf women clothing dikha rahe hai mens nhi hai?",
-        "text": "Bhaiya savana mein sirf women clothing dikha rahe hai mens nhi hai?",
-        "source": "youtube_comment",
-        "platform": "youtube",
-        "date": "2025-05-15",
-        "url": "https://youtube.com/watch?v=gJmhvusp1HI",
         "confidence": "high"
-      },
-      {
-        "evidence": "My correct size was completely unavailable (or perpetually sold out), forcing me to order a size adjacent",
-        "text": "Unfortunately, this review is driven by frustration over inventory. My correct size was completely unavailable (or perpetually sold out), forcing me to order a size adjacent to my own just to try the style. As expected, the fit was completely off. The waist was either too tight or too loose, and the",
-        "source": "myntra_reviews",
-        "platform": "jeans",
-        "date": "",
-        "url": "https://www.myntra.com/reviews/35476703",
-        "confidence": "high"
-      },
-      {
-        "evidence": "if i wishlist something for later it ends up either getting stocked out and never returns back in stock",
-        "text": "prices and cloth ranges are good but if i wishlist something for later it ends up either getting stocked out and never returns back in stock for months",
-        "source": "play_store",
-        "platform": "nykaafashion",
-        "date": "2026-08-18 00:25:38",
-        "url": "",
-        "confidence": "high"
-      },
-      {
-        "evidence": "Checked all telegram post this top is nowhere",
-        "text": "Checked all telegram post this top is nowhere",
-        "source": "youtube_comment",
-        "platform": "youtube",
-        "date": "2026-01-15",
-        "url": "https://youtube.com/watch?v=zR_J12Z3Kxo",
-        "confidence": "medium"
-      },
-      {
-        "evidence": "Im 6'7 36inch I want 7ft with full torso",
-        "text": "Im 6'7 36inch I want 7ft with full torso",
-        "source": "youtube_comment",
-        "platform": "youtube",
-        "date": "2022-03-02",
-        "url": "https://youtube.com/watch?v=8hc1pWyD3-g",
-        "confidence": "medium"
       }
     ],
     "none_stated": [
+      {
+        "evidence": "I wanna buy this for my sister her birthday is coming",
+        "text": "Give me the link for this dress meesho one okk please I wanna buy this for my sister her birthday is coming",
+        "source": "youtube_comment",
+        "platform": "youtube",
+        "date": "2024-08-25",
+        "url": "https://youtube.com/watch?v=UAGE51XUIZg",
+        "confidence": "high"
+      },
       {
         "evidence": "can u please provide the link of trouser",
         "text": "Waaooo so preetyyyy can u please provide the link of trouser❤❤I like it❤️",
@@ -725,20 +627,58 @@
         "confidence": "medium"
       },
       {
-        "evidence": "hassle-free exchange and return policy makes online shopping completely stress-free",
-        "text": "An absolute go-to app for fashion shopping! The interface is clean, easy to navigate, and offers a massive variety of clothing, footwear, and lifestyle brands. Delivery is usually on time, and the hassle-free exchange and return policy makes online shopping completely stress-free. Highly recommended",
+        "evidence": "meesho is best because of small budget and dark colour and also shining",
+        "text": "I think meesho is best because of small budget and dark colour and also shining I like that",
+        "source": "youtube_comment",
+        "platform": "youtube",
+        "date": "2024-09-08",
+        "url": "https://youtube.com/watch?v=UAGE51XUIZg",
+        "confidence": "medium"
+      }
+    ],
+    "suitability_on_me": [
+      {
+        "evidence": "First one is too good but too crop for me bcz of my height",
+        "text": "First one is too good but too crop for me bcz of my height 😢😢😢 Why I'm so long Sometime I hate my height. Can't wear crop and high heels 😢😢",
+        "source": "youtube_comment",
+        "platform": "youtube",
+        "date": "2026-03-04",
+        "url": "https://youtube.com/watch?v=iabxMFFAt7s",
+        "confidence": "high"
+      },
+      {
+        "evidence": "any clothing will look good on you only and only when you are fit",
+        "text": "Everyone who's watching this and thinking you should save this for later please consider that any clothing will look good on you only and only when you are fit. So hit gym or other exercises and change your inner look before your outer look.",
+        "source": "youtube_comment",
+        "platform": "youtube",
+        "date": "2025-05-19",
+        "url": "https://youtube.com/watch?v=gJmhvusp1HI",
+        "confidence": "medium"
+      },
+      {
+        "evidence": "wide hips like my momma not these skinny boys so jeans always been a struggle",
+        "text": "I was built with that badonkadonk and wide hips like my momma not these skinny boys so jeans always been a struggle for me…",
+        "source": "youtube_comment",
+        "platform": "youtube",
+        "date": "2023-02-19",
+        "url": "https://youtube.com/watch?v=8hc1pWyD3-g",
+        "confidence": "medium"
+      },
+      {
+        "evidence": "this cool AI feature let's you see what looks best on you in a jiffy",
+        "text": "I am loving this app's try on feature. This cool AI feature let's you see what looks best on you in a jiffy!",
         "source": "play_store",
-        "platform": "myntra",
-        "date": "2026-08-28 14:51:38",
+        "platform": "nykaafashion",
+        "date": "2026-08-17 22:58:20",
         "url": "",
         "confidence": "medium"
       },
       {
-        "evidence": "this is the best app to purchase fashion items in India rn.",
-        "text": "Honestly, this is the best app to purchase fashion items in India rn.",
+        "evidence": "they use ai and ai models to showcase their clothes which makes it very uneasy to find the right thing",
+        "text": "they use ai and ai models to showcase their clothes on the app which makes it very uneasy to find the right thing...",
         "source": "play_store",
-        "platform": "myntra",
-        "date": "2026-08-29 11:03:45",
+        "platform": "nykaafashion",
+        "date": "2026-08-22 19:47:35",
         "url": "",
         "confidence": "medium"
       }
@@ -781,13 +721,107 @@
         "confidence": "medium"
       },
       {
-        "evidence": "so many offers and discounts",
-        "text": "so many offers and discounts",
+        "evidence": "300 fist coopan not applicable mantra 500coopan not applicable very bad advertising",
+        "text": "more surch price high and 300 fist coopan not applicable mantra 500coopan not applicable very bad advertising",
         "source": "play_store",
         "platform": "myntra",
-        "date": "2026-08-29 21:21:42",
+        "date": "2026-09-02 02:25:02",
         "url": "",
-        "confidence": "low"
+        "confidence": "medium"
+      }
+    ],
+    "price_absolute": [
+      {
+        "evidence": "Jitna bhi btaye ho sab meri budget se bahar hai",
+        "text": "Jitna bhi btaye ho sab meri budget se bahar hai 🙄",
+        "source": "youtube_comment",
+        "platform": "youtube",
+        "date": "2026-01-12",
+        "url": "https://youtube.com/watch?v=gJmhvusp1HI",
+        "confidence": "high"
+      },
+      {
+        "evidence": "sbko same mt smjho bhai sb itne Ameer nhi h jo brands affords kr ske",
+        "text": "Yrr top 5-6% log h ve jo brands pe hate h or sirf 1-2% log hi h jo foreign brands k liye jate h , sbko same mt smjho bhai sb itne Ameer nhi h jo brands affords kr ske",
+        "source": "youtube_comment",
+        "platform": "youtube",
+        "date": "2025-08-16",
+        "url": "https://youtube.com/watch?v=88nEjSVOG5k",
+        "confidence": "high"
+      },
+      {
+        "evidence": "messho se batvo ye to bohot mahnga hai",
+        "text": "Jiji please messho se batvo ye to bohot mahnga hai 😢",
+        "source": "youtube_comment",
+        "platform": "youtube",
+        "date": "2025-09-10",
+        "url": "https://youtube.com/watch?v=hB2at5QJlJQ",
+        "confidence": "high"
+      },
+      {
+        "evidence": "jacket එකක් oder kre Rs.2400/- tax 😢😢😢 oder එකම එපා වුණා",
+        "text": "Tax fee eka වැඩි 😢😢😢 (jacket එකක් oder kre Rs.2400/- tax 😢😢😢 oder එකම එපා වුණා 😢😢😢",
+        "source": "youtube_comment",
+        "platform": "youtube",
+        "date": "2026-03-20",
+        "url": "https://youtube.com/watch?v=gO2m5h6xGBE",
+        "confidence": "high"
+      },
+      {
+        "evidence": "jo hum afford hi ni kr payenge 1 top 500 ka",
+        "text": "Diii aap itne aache clothes btate ho jo hum afford hi ni kr payenge 1 top 500 ka",
+        "source": "youtube_comment",
+        "platform": "youtube",
+        "date": "2025-06-13",
+        "url": "https://youtube.com/watch?v=iabxMFFAt7s",
+        "confidence": "high"
+      }
+    ],
+    "social_validation": [
+      {
+        "evidence": "Which one is better underneat or shapercult? Should I size up for full body shapewear?",
+        "text": "Full body Shapewear recommendations needed.. Hey everyone, I need a full body shapewear recommendation. Which one is better underneat or shapercult? And Should I size up for full body shapewear? I usually wear size XL, so should I order XL or XXL? Also I am so confused. &#32; submitted by &#32; /u/O",
+        "source": "reddit_post",
+        "platform": "r/IndianFashionAdvice",
+        "date": "2026-03-30",
+        "url": "https://www.reddit.com/r/IndianFashionAdvice/comments/1s7k466/full_body_shapewear_recommendations_needed/",
+        "confidence": "high"
+      },
+      {
+        "evidence": "How is the print quality please let me know",
+        "text": "How is the print quality please let me know",
+        "source": "youtube_comment",
+        "platform": "youtube",
+        "date": "2026-03-26",
+        "url": "https://youtube.com/watch?v=gO2m5h6xGBE",
+        "confidence": "medium"
+      },
+      {
+        "evidence": "formal trouser and shirt ka colour combination mere mein DM kar do",
+        "text": "Brother please koreai close ka formal trouser and shirt ka colour combination mere mein DM kar do😮😮 formal",
+        "source": "youtube_comment",
+        "platform": "youtube",
+        "date": "2026-08-29",
+        "url": "https://youtube.com/watch?v=gJmhvusp1HI",
+        "confidence": "medium"
+      },
+      {
+        "evidence": "how to measure by yourself , you will need : someone else",
+        "text": "how to measure by yourself , you will need : someone else",
+        "source": "youtube_comment",
+        "platform": "youtube",
+        "date": "2022-01-20",
+        "url": "https://youtube.com/watch?v=8hc1pWyD3-g",
+        "confidence": "medium"
+      },
+      {
+        "evidence": "Which app is good to use but in low prices? Should I check for meesho?",
+        "text": "I'm really confused that i need to use any of these app for my mom's shopping.. she is using online shopping for the first time. Which app is good to use but in low prices? Should I check for meesho? Pls need some help",
+        "source": "youtube_comment",
+        "platform": "youtube",
+        "date": "2026-08-19",
+        "url": "https://youtube.com/watch?v=C3OpvA4sSdk",
+        "confidence": "medium"
       }
     ],
     "decision_overload": [
@@ -810,6 +844,15 @@
         "confidence": "high"
       },
       {
+        "evidence": "34 k v 36 k v lekin konsa size lu mereko samajh main nahi a rahi hain",
+        "text": "Di,,,jeans measuring time pe waist jab measure karugi to kya tight se karungi ya halka se measure karungi...kiase lena chahiye kiuki mere 34 size jab ho raha hain tape k andar ek unhli chala ja rahi hain aram se lekin 36 thoda hi bada type lag rahi hain main wo hard tape hota hain na round types ki ",
+        "source": "youtube_comment",
+        "platform": "youtube",
+        "date": "2025-05-25",
+        "url": "https://youtube.com/watch?v=z0c74X7unZw",
+        "confidence": "high"
+      },
+      {
         "evidence": "Every time I open the app to buy what I saved, it shows me ten new things instead.",
         "text": "Every time I open the app to buy what I saved, it shows me ten new things instead.",
         "source": "play_store",
@@ -825,15 +868,6 @@
         "platform": "youtube",
         "date": "2026-08-29",
         "url": "https://youtube.com/watch?v=gJmhvusp1HI",
-        "confidence": "medium"
-      },
-      {
-        "evidence": "Messho dress cotton blend n mintra's silk blend",
-        "text": "Messho dress cotton blend n mintra's silk blend",
-        "source": "youtube_comment",
-        "platform": "youtube",
-        "date": "2024-08-22",
-        "url": "https://youtube.com/watch?v=UAGE51XUIZg",
         "confidence": "medium"
       }
     ],
@@ -856,6 +890,24 @@
         "platform": "r/IndianStreetWear",
         "date": "2026-01-08",
         "url": "https://www.reddit.com/r/IndianStreetWear/comments/1q7emoi/late_night_movie_outfit_check_this_skirt_is_super/nyev3r7/",
+        "confidence": "medium"
+      },
+      {
+        "evidence": "Which of these would you choose? Or do you have other suggestions for Janmashtami-ready looks?",
+        "text": "Looking for Janmashtami Outfit Inspiration? What Do You Think of These Picks?. Janmashtami is next week, and I’ve been looking for something pretty to wear for my small puja at home. Since I’ll be heading to a few temples afterwards, I want it to be festive but still super comfortable. I’ve shortlis",
+        "source": "reddit_post",
+        "platform": "r/IndianFashionAdvice",
+        "date": "2025-08-11",
+        "url": "https://www.reddit.com/r/IndianFashionAdvice/comments/1mn9nfs/looking_for_janmashtami_outfit_inspiration_what/",
+        "confidence": "medium"
+      },
+      {
+        "evidence": "outside apudu apudu veltha konta akuga online a andukey adugutuna",
+        "text": "Nenu outside apudu apudu veltha konta akuga online a andukey adugutuna",
+        "source": "youtube_comment",
+        "platform": "youtube",
+        "date": "2025-08-03",
+        "url": "https://youtube.com/watch?v=C3OpvA4sSdk",
         "confidence": "medium"
       }
     ]

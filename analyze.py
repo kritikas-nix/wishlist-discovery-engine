@@ -107,6 +107,12 @@ def main():
         raise SystemExit(f"{IN_PATH} not found. Run classify.py first.")
 
     rows = load()
+    # Count only tags whose id is in the current corpus, so stale rows from
+    # an earlier collection run cannot double-count re-fetched text.
+    import csv as _csv
+    with open("data/raw_corpus.csv", encoding="utf-8") as f:
+        live_ids = {r["id"] for r in _csv.DictReader(f)}
+    rows = [r for r in rows if r["id"] in live_ids]
     relevant = [r for r in rows if r.get("relevance") in RELEVANT]
 
     findings = {
