@@ -206,8 +206,8 @@ function BriefMode({ demos }: { demos: Product[] }) {
     const live = !!url.trim();
     const steps = live
       ? ["Fetching the product and its reviews from Myntra",
-         "Reading every review", "Writing your answer"]
-      : ["Loading the item", "Reading every review", "Writing your answer"];
+         "Reading the buyer reviews", "Writing your answer"]
+      : ["Loading the item", "Reading the buyer reviews", "Writing your answer"];
     try {
       let product: Product;
       if (live) {
@@ -383,7 +383,7 @@ function WishlistMode({ demos }: { demos: Product[] }) {
     if (!chosen.length) { setError("Tap a few items first."); return; }
     await run(chosen,
       [`Reading buyer reviews for ${chosen.length} items at once`,
-       "Ranking them, safest first"], 0);
+       "Ranking them, strongest evidence first"], 0);
   }
 
   async function goLinks() {
@@ -393,7 +393,7 @@ function WishlistMode({ demos }: { demos: Product[] }) {
     const steps = [
       `Fetching ${lines.length} item${lines.length > 1 ? "s" : ""} from Myntra, one by one`,
       "Reading buyer reviews for each item",
-      "Ranking them, safest first"];
+      "Ranking them, strongest evidence first"];
     try {
       setProg({ steps, current: 0 });
       const products: Product[] = [];

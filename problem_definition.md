@@ -10,10 +10,13 @@ lot for unresolved doubt.
 
 ## Target segment
 
-Wishlist users with purchase intent: people who save items planning or
-seriously considering buying them (survey: 7 of 16 respondents describe their
-wishlist use as "planning to buy soon", another 5 as "a mix"). Ages 19 to 30
-in the survey, 24 to 42 in the six interviews; students and working shoppers, buying mid-range
+High-intent Myntra wishlist users who can afford the item and are actively
+considering purchase, but delay because unresolved product-evidence
+uncertainty prevents them from committing. Other considerations such as
+price may coexist, but affordability is not the binding constraint.
+(Survey: 7 of 16 describe their wishlist as "planning to buy soon", 5 more
+as a mix.) Ages 19 to 30 in the survey, 24 to 42 in the six depth
+interviews; students and working shoppers, buying mid-range
 fashion (₹500–6,000 items in their actual wishlists).
 
 ## The product outcome to influence

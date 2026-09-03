@@ -138,10 +138,14 @@ export default function ResearchPage() {
       <section className="section-block">
         <h2 className="section">The six depth interviews</h2>
         <p className="small" style={{ maxWidth: 680, marginBottom: 6 }}>
-          Six 15-minute interviews with the target segment: high-intent
-          wishlist users who could afford their item and were delaying on
-          doubt; none were purely bookmarking. Three were survey opt-ins;
-          three were recruited to the same segment.{" "}
+          Six 15-minute depth interviews with the target segment:
+          high-intent Myntra wishlist users who can afford the item and are
+          actively considering purchase, but delay because unresolved
+          product-evidence uncertainty prevents them from committing. Other
+          considerations such as price may coexist, but affordability is
+          not the binding constraint. Screener note: all six participants
+          confirmed they could afford the item being discussed. Three were
+          survey opt-ins; three were recruited to the same segment.{" "}
           <strong>In all six interviews, wishlist behaviour and blockers
           were discussed before the prototype was shown</strong>, so the
           problem findings are not contaminated by solution exposure.
