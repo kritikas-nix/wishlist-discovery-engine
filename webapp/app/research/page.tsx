@@ -139,11 +139,15 @@ export default function ResearchPage() {
         <h2 className="section">The six depth interviews</h2>
         <p className="small" style={{ maxWidth: 680, marginBottom: 6 }}>
           Six 15-minute interviews with the target segment: high-intent
-          wishlist users who could afford the item and delayed on doubt.
-          Three were survey opt-ins; three were recruited to the same
-          segment. Notes are anonymised summaries, close to the
-          participants&apos; words but not verbatim transcripts. Each
-          participant tested the prototype live on their own saved item.
+          wishlist users who could afford their item and were delaying on
+          doubt; none were purely bookmarking. Three were survey opt-ins;
+          three were recruited to the same segment.{" "}
+          <strong>In all six interviews, wishlist behaviour and blockers
+          were discussed before the prototype was shown</strong>, so the
+          problem findings are not contaminated by solution exposure.
+          Notes are anonymised summaries, close to the participants&apos;
+          words but not verbatim transcripts. Each participant then tested
+          the prototype live on their own saved item.
         </p>
         {INTERVIEWS.map((iv) => (
           <div className="card" key={iv.who}>
