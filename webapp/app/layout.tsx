@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Instrument_Sans } from "next/font/google";
+import { Fraunces, Instrument_Sans, Noto_Sans_Devanagari } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
 
@@ -12,6 +12,10 @@ const instrument = Instrument_Sans({
   subsets: ["latin"],
   variable: "--font-instrument",
 });
+const devanagari = Noto_Sans_Devanagari({
+  subsets: ["devanagari"],
+  variable: "--font-devanagari",
+});
 
 export const metadata: Metadata = {
   title: "Why saved items don't get bought",
@@ -21,7 +25,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${instrument.variable}`}>
+    <html lang="en"
+      className={`${fraunces.variable} ${instrument.variable} ${devanagari.variable}`}>
       <body>
         <main>
           <div className="wrap">

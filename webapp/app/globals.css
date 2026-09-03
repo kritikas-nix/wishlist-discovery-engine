@@ -11,8 +11,8 @@
   --risk: #a05a00;
   --unsettled: #7a7266;
   --data: #1c5cab;
-  --serif: var(--font-fraunces), Georgia, serif;
-  --sans: var(--font-instrument), -apple-system, "Segoe UI", sans-serif;
+  --serif: var(--font-fraunces), var(--font-devanagari), Georgia, serif;
+  --sans: var(--font-instrument), var(--font-devanagari), -apple-system, "Segoe UI", sans-serif;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
