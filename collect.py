@@ -46,15 +46,15 @@ _load_dotenv()
 # CONFIG
 # ---------------------------------------------------------------------------
 
-TARGET_N = 1200
+TARGET_N = 4000
 OUT_DIR = "data"
 UA = "Mozilla/5.0 (research script for a student project)"
 
 # name -> (package id, reviews to fetch). Myntra gets more, it is the subject.
 PLAY_APPS = {
-    "myntra": ("com.myntra.android", 800),
-    "ajio": ("com.ril.ajio", 400),
-    "nykaafashion": ("com.fsn.nds", 400),
+    "myntra": ("com.myntra.android", 2000),
+    "ajio": ("com.ril.ajio", 1000),
+    "nykaafashion": ("com.fsn.nds", 1000),
 }
 
 # Reddit goes through Apify's reddit-scraper-lite actor. Direct access to
@@ -87,10 +87,12 @@ REDDIT_RUNS = [
     {
         "startUrls": [
             "https://www.reddit.com/r/IndianFashionAdvice/top/?t=year",
+            "https://www.reddit.com/r/IndianFashionAdvice/top/?t=all",
             "https://www.reddit.com/r/DesiFashionAdvice/top/?t=year",
             "https://www.reddit.com/r/IndianStreetwear/top/?t=year",
+            "https://www.reddit.com/r/TwoXIndia/top/?t=year",
         ],
-        "maxItems": 400,
+        "maxItems": 700,
     },
 ]
 
@@ -103,8 +105,11 @@ MYNTRA_CATEGORY_PAGES = [
     "https://www.myntra.com/tshirts",
     "https://www.myntra.com/jeans",
     "https://www.myntra.com/shirts",
+    "https://www.myntra.com/sarees",
+    "https://www.myntra.com/tops",
+    "https://www.myntra.com/trousers",
 ]
-MYNTRA_PRODUCTS_PER_CATEGORY = 6
+MYNTRA_PRODUCTS_PER_CATEGORY = 10
 
 # Optional. Get a key at console.cloud.google.com, enable YouTube Data API v3.
 YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", "")
@@ -112,6 +117,9 @@ YOUTUBE_QUERIES = [
     "myntra haul review",
     "myntra size guide",
     "online shopping clothes india honest review",
+    "myntra wishlist",
+    "ajio haul honest",
+    "online shopping size problem india",
 ]
 
 os.makedirs(OUT_DIR, exist_ok=True)

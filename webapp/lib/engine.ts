@@ -315,7 +315,13 @@ Return ONLY a JSON object, no markdown fences:
 }
 
 At most 4 quotes per section, each verbatim from a review, max 25 words.
-Counts must be real counts of reviews, not guesses.`;
+Counts must be real counts of reviews, not guesses.
+
+Decisiveness rule: confidence must match the evidence, in both directions.
+When the reviews are strongly positive and nothing in them argues against
+the purchase, say that plainly, e.g. "Nothing in these reviews argues
+against buying this one." Never soften an earned yes. Never inflate a
+weak one.`;
 }
 
 export async function makeBrief(product: Product, doubtKey: string) {
@@ -370,7 +376,9 @@ Return ONLY a JSON object, no fences:
 
 "looks_safe" needs consistent positive evidence with no repeated complaint.
 "has_risks" means a concrete repeated problem (sizing, quality, colour).
-"reviews_cant_settle" means too few or too vague reviews. Never invent.`;
+"reviews_cant_settle" means too few or too vague reviews. Never invent.
+For a "looks_safe" item, the headline should be plainly confident, not
+hedged: the evidence earned it.`;
 }
 
 export async function makeVerdict(product: Product) {

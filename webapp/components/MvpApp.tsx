@@ -282,6 +282,10 @@ function BriefMode({ demos }: { demos: Product[] }) {
               reviews fetched for this item. Quotes are word for word,
               checked by the system against the review text.
             </p>
+            <a className="btn" href={result.product.url} target="_blank"
+              rel="noreferrer" style={{ marginTop: 14 }}>
+              Open it on Myntra
+            </a>
           </div>
           {(Object.keys(SECTION_TITLES) as (keyof typeof SECTION_TITLES)[])
             .sort((a, b) => (a === focusKey ? -1 : b === focusKey ? 1 : 0))
@@ -467,6 +471,9 @@ function WishlistMode({ demos }: { demos: Product[] }) {
                   <div style={{ display: "flex", gap: 12, alignItems: "baseline", flexWrap: "wrap" }}>
                     <h3>{i + 1}. {p.brand}: {p.name.slice(0, 60)}</h3>
                     <span className={`badge ${SAFETY[v.safety].cls}`}>{SAFETY[v.safety].label}</span>
+                    {i === 0 && v.safety === "looks_safe" && (
+                      <span className="badge plain">Best first buy from your list</span>
+                    )}
                   </div>
                   <MetaLine p={p} />
                   <p style={{ marginTop: 10 }}>{v.headline}</p>
