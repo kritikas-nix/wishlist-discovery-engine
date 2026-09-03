@@ -29,6 +29,15 @@ export default function EnginePage() {
           to find out why saved items stay unbought.
         </h1>
 
+        <div className="notice" style={{ marginTop: 22 }}>
+          <strong>This page in 15 seconds:</strong> we collected{" "}
+          {corpus.total_tagged.toLocaleString()} real posts and reviews,
+          kept the {relN} that are about someone deciding whether to buy,
+          and counted what stops them. The biggest blocker is not price or
+          fit. It is not being able to trust what the listing shows. That
+          finding is what the prototype is built to fix.
+        </div>
+
         <div className="steps-strip">
           <div className="step-card">
             <div className="num">1</div>

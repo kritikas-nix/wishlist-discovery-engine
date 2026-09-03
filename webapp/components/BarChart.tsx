@@ -17,13 +17,16 @@ export default function BarChart({
     <div className="chart">
       <div className="title">{title}</div>
       <div className="n-note">{nNote ?? `n = ${n}`}</div>
-      {entries.map(([key, val]) => (
+      {entries.map(([key, val], i) => (
         <div className="bar-row" key={key}>
           <div className="lbl">{labels?.[key] ?? key}</div>
           <div className="bar-track">
             <div
               className={`bar-fill${alt ? " alt" : ""}`}
-              style={{ width: `${(val / max) * 100}%` }}
+              style={{
+                width: `${(val / max) * 100}%`,
+                animationDelay: `${i * 90}ms`,
+              }}
             />
           </div>
           <div className="val">

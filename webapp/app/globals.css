@@ -168,7 +168,13 @@ blockquote .who { display: block; font-style: normal; font-size: 13px; color: va
 .bar-fill {
   position: absolute; inset: 0 auto 0 0; border-radius: 4px;
   background: var(--data); min-width: 2px;
-  transition: width 0.6s cubic-bezier(0.2, 0.7, 0.3, 1);
+  transform-origin: left center;
+  animation: growbar 0.7s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+@keyframes growbar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .bar-fill { animation: none; }
+  .reveal { animation: none; }
 }
 .bar-fill.alt { background: var(--berry); }
 .bar-row .val { font-size: 13.5px; color: var(--ink); font-variant-numeric: tabular-nums; }

@@ -451,6 +451,14 @@ function WishlistMode({ demos }: { demos: Product[] }) {
               .map(([k, w]) => `${counts[k]} ${w}`)
               .join(", ")}.
           </p>
+          {ranked.length > 1 && ranked[0].verdict.safety === "looks_safe" &&
+            ranked.some((r) => r.verdict.safety !== "looks_safe") && (
+            <div className="notice">
+              Worried about the risky ones? Your own list already has a
+              safer pick: start with #1,{" "}
+              <strong>{ranked[0].product.brand}</strong>.
+            </div>
+          )}
           {ranked.map(({ product: p, verdict: v }, i) => (
             <div className="card" key={p.style_id}>
               <div className="card-flex">
