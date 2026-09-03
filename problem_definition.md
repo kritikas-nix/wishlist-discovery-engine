@@ -18,10 +18,10 @@ fashion (₹500–6,000 items in their actual wishlists).
 
 ## The product outcome to influence
 
-The confidence stage of the conversion chain (see metric decomposition):
-share of wishlist item re-views that end in add-to-cart rather than another
-postponement. The chain is Return x Reconsider x Confidence x Complete; the
-evidence puts the binding leak at Confidence.
+Increase the share of high-intent wishlist users who resolve
+product-evidence uncertainty and progress at least one saved item toward
+purchase. (Outcome tree: re-engage, resolve consideration, complete; the
+evidence puts the binding leak at resolve-consideration.)
 
 ## Root cause
 

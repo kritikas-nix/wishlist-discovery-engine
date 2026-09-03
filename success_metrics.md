@@ -18,8 +18,8 @@ normal wishlist.
 
 ## Primary leading indicator
 
-**Wishlist-item to cart conversion after exposure to an evidence brief**,
-versus comparable un-briefed items.
+**Wishlist-to-cart conversion among treatment users versus control users**
+(item-level briefed-vs-unbriefed analysis as a secondary read).
 *Why:* the closest measurable step to purchase that the product directly
 influences, and it moves within days rather than 30.
 

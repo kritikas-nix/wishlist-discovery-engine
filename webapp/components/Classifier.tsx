@@ -34,6 +34,17 @@ type Tags = {
   evidence: string;
 };
 
+const NICE: Record<string, string> = {
+  deferred_purchase: "Deferred purchase", purchase_decision: "Purchase decision",
+  post_purchase: "Post-purchase", irrelevant: "Irrelevant",
+  about_product: "About the product", about_self: "About themselves",
+  about_context: "About context (budget, occasion)", not_applicable: "Not applicable",
+  intent_to_buy: "Intent to buy", bookmark: "Bookmark", compare: "Comparison",
+  declutter: "Declutter", unclear: "Unclear",
+  high: "High", medium: "Medium", low: "Low",
+};
+const nice = (v: string) => NICE[v] ?? v;
+
 export default function Classifier({
   blockerLabels, workaroundLabels, totalTagged,
 }: {
@@ -81,9 +92,10 @@ export default function Classifier({
           {" "}2. Press Classify it. 3. In about ten seconds the tags
           appear, with the exact phrase the model used as evidence. Try to
           trick it: vague text comes back{" "}
-          <span className="tag-code">unclear</span>, complaints come back{" "}
-          <span className="tag-code">irrelevant</span>. Refusing to guess is
-          the point.
+          <span className="tag-code">Unclear</span>, complaints come back{" "}
+          <span className="tag-code">Irrelevant</span>. When evidence is
+          insufficient, the model is instructed to return Unclear rather
+          than infer.
         </p>
       </div>
       <div className="choices" style={{ marginTop: 0 }}>
@@ -108,10 +120,10 @@ export default function Classifier({
       {error && <div className="error-box">{error}</div>}
       {tags && (
         <div className="card reveal">
-          <p><strong>Relevance:</strong> <span className="tag-code">{tags.relevance}</span></p>
-          <p><strong>The doubt is about:</strong> <span className="tag-code">{tags.uncertainty_object}</span></p>
-          <p><strong>Saving intent:</strong> <span className="tag-code">{tags.saving_intent}</span>
-            {"  "}<strong style={{ marginLeft: 14 }}>Confidence:</strong> <span className="tag-code">{tags.confidence}</span></p>
+          <p><strong>Relevance:</strong> <span className="tag-code">{nice(tags.relevance)}</span></p>
+          <p><strong>The doubt is about:</strong> <span className="tag-code">{nice(tags.uncertainty_object)}</span></p>
+          <p><strong>Saving intent:</strong> <span className="tag-code">{nice(tags.saving_intent)}</span>
+            {"  "}<strong style={{ marginLeft: 14 }}>Confidence:</strong> <span className="tag-code">{nice(tags.confidence)}</span></p>
           <p style={{ marginTop: 10 }}><strong>Blockers:</strong>{" "}
             {tags.blockers.length
               ? tags.blockers.map((b) => blockerLabels[b] ?? b).join(" · ")

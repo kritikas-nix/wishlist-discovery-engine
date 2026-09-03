@@ -24,7 +24,7 @@ export default function MvpPage() {
         <div className="props-row">
           <div className="prop-card">
             <div className="ic">📖</div>
-            <div className="pt">Reads every review for you</div>
+            <div className="pt">Reads buyer reviews for you</div>
             <div className="pd">
               Dozens of real buyer reviews, fetched and read in under a
               minute. The homework you keep postponing, done.

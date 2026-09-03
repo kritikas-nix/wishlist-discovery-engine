@@ -20,7 +20,7 @@ const devanagari = Noto_Sans_Devanagari({
 export const metadata: Metadata = {
   title: "Why saved items don't get bought",
   description:
-    "A research project on Myntra wishlist-to-purchase conversion: an AI discovery engine over 3,183 public conversations, primary research on real wishlists, and a working prototype that answers the doubt blocking the purchase.",
+    "A research project on Myntra wishlist-to-purchase conversion: an AI discovery engine over 3,183 public posts, comments and reviews, primary research on real wishlists, and a working prototype that answers the doubt blocking the purchase.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -44,10 +44,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               A product research project on wishlist-to-purchase conversion in
               Indian fashion e-commerce. Every number on this site is computed
               from collected data and carries its sample size; every quote is
-              verbatim. Research artifacts:{" "}
-              <a href="https://forms.gle/2f1TYzFeu95ZXCEe6"
-                style={{ color: "var(--berry)" }}>the survey instrument</a>.
-              Not affiliated with Myntra.
+              verbatim. See the{" "}
+              <a href="/research" style={{ color: "var(--berry)" }}>research
+              artefacts</a>: the survey instrument, the qualification funnel,
+              and all six interview summaries. Not affiliated with Myntra.
             </footer>
           </div>
         </main>

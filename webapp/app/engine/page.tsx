@@ -25,8 +25,8 @@ export default function EnginePage() {
       <section className="hero" style={{ paddingBottom: 24 }}>
         <div className="kicker">Deliverable 1 · The AI discovery engine</div>
         <h1 className="display" style={{ fontSize: "clamp(32px,5vw,48px)" }}>
-          We read {corpus.total_tagged.toLocaleString()} public conversations
-          to find out why saved items stay unbought.
+          We read {corpus.total_tagged.toLocaleString()} public posts, comments
+          and reviews to find out why saved items stay unbought.
         </h1>
 
         <div className="notice" style={{ marginTop: 22 }}>
@@ -42,7 +42,7 @@ export default function EnginePage() {
         <div className="kpi-row">
           <div className="kpi-card">
             <div className="knum">{corpus.total_tagged.toLocaleString()}</div>
-            <div className="klbl">Conversations read</div>
+            <div className="klbl">Posts, comments, reviews read</div>
             <div className="ksub">Play Store, Reddit, Myntra reviews, YouTube</div>
           </div>
           <div className="kpi-card">
@@ -56,7 +56,7 @@ export default function EnginePage() {
             <div className="ksub">106 of {relN} cannot trust the photos, reviews or seller</div>
           </div>
           <div className="kpi-card">
-            <div className="knum accent">4:1</div>
+            <div className="knum accent">4.5:1</div>
             <div className="klbl">Product vs self doubt</div>
             <div className="ksub">the missing piece is item information, not styling advice</div>
           </div>
@@ -106,7 +106,9 @@ export default function EnginePage() {
         <p className="small" style={{ maxWidth: 640 }}>
           Of the {corpus.total_tagged.toLocaleString()} items collected,
           {" "}{relN} are about someone deciding whether to buy. This chart
-          counts what they said was stopping them.
+          counts what they said was stopping them.{" "}
+          <strong>Blocker prevalence uses n={relN} pre-purchase
+          deliberations; post-purchase product reviews are excluded.</strong>
         </p>
         <BarChart
           title="Blockers across relevant items"
@@ -121,7 +123,8 @@ export default function EnginePage() {
           reviews and sellers is the largest single blocker (106 of 427),
           worth-the-money a close second (99). Together the evidence
           cluster (trust, quality, worth) touches 211 of 427 deliberations;
-          pure affordability (cannot afford, waiting for a sale) touches 40.
+          affordability and timing (cannot afford, waiting for a sale)
+          touch 40.
         </div>
       </section>
 
@@ -232,8 +235,9 @@ export default function EnginePage() {
         <p className="small" style={{ maxWidth: 640, marginBottom: 14 }}>
           This runs the exact same tagging step used on all{" "}
           {corpus.total_tagged.toLocaleString()} items. It usually takes
-          under 15 seconds. <span className="tag-code">unclear</span> is a
-          correct answer, not a failure: the model is told never to guess.
+          under 15 seconds. <span className="tag-code">Unclear</span> is a
+          correct answer, not a failure: when evidence is insufficient the
+          model is instructed to return Unclear rather than infer.
         </p>
         <Classifier blockerLabels={BLOCKERS} workaroundLabels={WORKAROUNDS}
           totalTagged={corpus.total_tagged} />

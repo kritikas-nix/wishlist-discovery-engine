@@ -21,7 +21,7 @@ export default function Home() {
             problem was not given. It had to be found.
           </div>
           <div>
-            3,183 public conversations, 16 real wishlists, one working
+            3,183 public posts, comments and reviews. 16 real wishlists. One working
             prototype. Every number carries its n.
           </div>
         </div>
@@ -42,12 +42,12 @@ export default function Home() {
       <section className="section-block">
         <div className="kicker">What the research found</div>
         <h2 className="section">
-          The blocker isn&apos;t price. It&apos;s doubt nobody answers.
+          The blocker is unanswered doubt, not just price.
         </h2>
         <div className="stat-row">
           <div className="stat">
             <div className="n">{corpus.total_tagged.toLocaleString()}</div>
-            <div className="lbl">public conversations tagged by the engine</div>
+            <div className="lbl">public posts, comments and reviews tagged by the engine</div>
           </div>
           <div className="stat">
             <div className="n">#1</div>

@@ -242,11 +242,12 @@ function BriefMode({ demos }: { demos: Product[] }) {
       <div className="live-panel">
         <div className="live-head">
           <span className="live-badge">Live</span>
-          Or any item on Myntra, right now
+          Or paste a Myntra product link
         </div>
         <div className="sub">
-          Paste any myntra.com product link. It is fetched live with its real
-          buyer reviews.
+          Accepts real myntra.com product links, fetched live with their
+          buyer reviews. Live fetching may occasionally be blocked by
+          Myntra; the sample items always work.
         </div>
         <input type="text" value={url}
           placeholder="https://www.myntra.com/dresses/brand/…/31034107/buy"
@@ -282,10 +283,14 @@ function BriefMode({ demos }: { demos: Product[] }) {
               reviews fetched for this item. Quotes are word for word,
               checked by the system against the review text.
             </p>
-            <a className="btn" href={result.product.url} target="_blank"
-              rel="noreferrer" style={{ marginTop: 14 }}>
-              Open it on Myntra
-            </a>
+            <div style={{ marginTop: 14, display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
+              <a className="btn" href={result.product.url} target="_blank"
+                rel="noreferrer">Open it on Myntra</a>
+              <a className="small" href={result.product.url} target="_blank"
+                rel="noreferrer" style={{ color: "var(--berry)" }}>
+                Read the source reviews yourself
+              </a>
+            </div>
           </div>
           {(Object.keys(SECTION_TITLES) as (keyof typeof SECTION_TITLES)[])
             .sort((a, b) => (a === focusKey ? -1 : b === focusKey ? 1 : 0))
@@ -448,7 +453,7 @@ function WishlistMode({ demos }: { demos: Product[] }) {
       {ranked && (
         <div className="reveal" style={{ marginTop: 22 }}>
           <p>
-            <strong>{ranked.length} item{ranked.length > 1 ? "s" : ""}, safest first</strong>
+            <strong>{ranked.length} item{ranked.length > 1 ? "s" : ""}, strongest evidence first</strong>
             {": "}
             {Object.entries(summaryWord)
               .filter(([k]) => counts[k])
