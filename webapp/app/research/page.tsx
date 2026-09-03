@@ -132,7 +132,11 @@ export default function ResearchPage() {
           things they plan to buy soon, 5 as a mix, 3 as
           save-but-might-never-buy, 1 as a comparison set. Bookmarking is
           real in self-reports, rare in the texts of people actively
-          deliberating a purchase.
+          deliberating a purchase. (Method note: the per-field rule that
+          saving intent must be explicitly stated or clearly evidenced was
+          made explicit after an audit of the live classifier; the corpus
+          was tagged under the general no-inference rule, so the 183
+          classifiable items should be read as an upper bound.)
         </p>
       </section>
 
