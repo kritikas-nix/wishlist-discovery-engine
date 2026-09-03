@@ -30,12 +30,13 @@ export default function EnginePage() {
         </h1>
 
         <div className="notice" style={{ marginTop: 22 }}>
-          <strong>This page in 15 seconds:</strong> we collected{" "}
-          {corpus.total_tagged.toLocaleString()} real posts and reviews,
-          kept the {relN} that are about someone deciding whether to buy,
-          and counted what stops them. The biggest blocker is not price or
-          fit. It is not being able to trust what the listing shows. That
-          finding is what the prototype is built to fix.
+          <strong>This page in 15 seconds:</strong> 3,183 unique posts and
+          reviews collected &rarr; 1,381 operational complaints removed
+          &rarr; 1,375 post-purchase reviews set aside (used as product-risk
+          evidence, excluded from every blocker figure) &rarr;{" "}
+          <strong>{relN} genuine purchase deliberations</strong>, counted.
+          The biggest single blocker: not being able to trust what the
+          listing shows. That finding is what the prototype is built to fix.
         </div>
 
         <div className="kpi-row">
@@ -115,9 +116,12 @@ export default function EnginePage() {
           labels={BLOCKERS}
         />
         <div className="takeaway">
-          <strong>Takeaway:</strong> the biggest blocker is not price. It is
-          not being able to trust the photos, reviews or seller (106 of 427).
-          Worth-the-money doubts come a close second, size doubts third.
+          <strong>Takeaway:</strong> users are not only waiting for a lower
+          price; most are waiting for believable evidence. Trust in photos,
+          reviews and sellers is the largest single blocker (106 of 427),
+          worth-the-money a close second (99). Together the evidence
+          cluster (trust, quality, worth) touches 211 of 427 deliberations;
+          pure affordability (cannot afford, waiting for a sale) touches 40.
         </div>
       </section>
 
@@ -145,9 +149,12 @@ export default function EnginePage() {
           ))}
         </div>
         <div className="takeaway">
-          <strong>Takeaway:</strong> doubts about the product outnumber doubts
-          about oneself 172 to 38, more than four to one. The missing piece
-          is believable information about the item, not body-fit advice.
+          <strong>Takeaway:</strong> of {relN} deliberations, 210 carry a
+          doubt classifiable on this axis: 172 about the product&apos;s
+          information vs 38 about oneself, more than four to one. (Another
+          130 are blocked on context such as budget or occasion, and 87
+          state no specific doubt.) The missing piece is believable item
+          information, not body-fit advice.
         </div>
       </section>
 
@@ -205,13 +212,17 @@ export default function EnginePage() {
         <div className="notice">
           Said plainly: public feedback is written by people who chose to
           write it, and it leans toward whatever is easiest to complain
-          about. The tagging is done by a model, so we audited it: a blind
-          human re-check of 40 items agreed on relevant-or-not 32 times out
-          of 40, and on the blocker 11 times out of 12 when both called an
-          item relevant. The model&apos;s errors lean one way, counting
-          borderline platform chatter as relevant, so the top blocker&apos;s
-          count is likely a few items generous. The finding still stands,
-          and a survey of 16 real wishlists pointed the same way.
+          about. Three checks keep the numbers honest. First, the finding is
+          stable across sources: among deliberations, the trust blocker
+          appears in 24% of Play Store items, 27% of YouTube, 29% of Reddit.
+          Second, post-purchase product reviews are excluded from blocker
+          denominators (only 14 of 843 Myntra reviews were mid-deliberation
+          texts, and none carry a trust tag). Third, the tagging was
+          audited: a blind human re-check of 40 items agreed 32/40 on
+          relevance and 11/12 on the blocker; the model&apos;s one bias,
+          counting borderline platform chatter as relevant, is disclosed.
+          A survey of 16 real wishlists, a distinct evidence stream, pointed
+          the same way.
         </div>
       </section>
 

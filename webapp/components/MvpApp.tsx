@@ -28,9 +28,9 @@ type Brief = {
 type Progress = { steps: string[]; current: number } | null;
 
 const SAFETY = {
-  looks_safe: { cls: "safe", label: "Looks safe to buy" },
-  has_risks: { cls: "risk", label: "Has real risks" },
-  reviews_cant_settle: { cls: "unsettled", label: "Reviews can't settle it" },
+  looks_safe: { cls: "safe", label: "Evidence supports buying" },
+  has_risks: { cls: "risk", label: "Evidence shows risks" },
+  reviews_cant_settle: { cls: "unsettled", label: "Not enough evidence" },
 } as const;
 
 const DOUBTS: Record<string, string> = {
@@ -412,8 +412,8 @@ function WishlistMode({ demos }: { demos: Product[] }) {
       }, {})
     : {};
   const summaryWord: Record<string, string> = {
-    looks_safe: "safe to buy", has_risks: "with real risks",
-    reviews_cant_settle: "unsettled",
+    looks_safe: "with supporting evidence", has_risks: "with evidence of risks",
+    reviews_cant_settle: "without enough evidence",
   };
 
   return (
@@ -458,8 +458,8 @@ function WishlistMode({ demos }: { demos: Product[] }) {
           {ranked.length > 1 && ranked[0].verdict.safety === "looks_safe" &&
             ranked.some((r) => r.verdict.safety !== "looks_safe") && (
             <div className="notice">
-              Worried about the risky ones? Your own list already has a
-              safer pick: start with #1,{" "}
+              Worried about the risky ones? Your own list already holds the
+              most evidence-backed option: start with #1,{" "}
               <strong>{ranked[0].product.brand}</strong>.
             </div>
           )}
@@ -472,7 +472,7 @@ function WishlistMode({ demos }: { demos: Product[] }) {
                     <h3>{i + 1}. {p.brand}: {p.name.slice(0, 60)}</h3>
                     <span className={`badge ${SAFETY[v.safety].cls}`}>{SAFETY[v.safety].label}</span>
                     {i === 0 && v.safety === "looks_safe" && (
-                      <span className="badge plain">Best first buy from your list</span>
+                      <span className="badge plain">Most evidence-backed in your list</span>
                     )}
                   </div>
                   <MetaLine p={p} />

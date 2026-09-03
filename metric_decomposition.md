@@ -3,18 +3,26 @@
 **Business metric:** % of users who purchase at least one item from their
 wishlist within 30 days of adding it.
 
-## The chain a saved item has to survive
+## The outcome tree a saved item has to survive
 
-A wishlisted item only converts if every step below happens. Miss any one and
-the metric doesn't move. That makes the metric a product of stage rates, and
-the job is to find which stage leaks most for which users.
+The business metric is user-level: a user converts if any one of their saved
+items gets bought within 30 days. So this is an outcome tree, not a strict
+multiplication: one user has many items, and conversion can come from any of
+them. Three product outcomes have to happen for at least one item:
 
 ```
-Save it  ->  Come back to it  ->  Still want it  ->  Doubt resolved  ->  Buy it
- (intent)      (return)            (reconsider)       (confidence)      (complete)
+Goal: user buys >= 1 wishlisted item within 30 days
+  1. Re-engage            the user returns to / reconsiders a saved item
+  2. Resolve consideration the doubt blocking that item gets resolved
+  3. Complete purchase    the chosen item moves to cart and order
 ```
 
-**Wishlist conversion ≈ Return rate × Reconsider rate × Confidence rate × Completion rate**, taken over the user's best item, within the 30-day window.
+Under "resolve consideration", the doubt splits into: product-evidence
+uncertainty, self-fit uncertainty, affordability, and comparison overload.
+The research below measures which of those is biggest. None of the stage
+rates were directly measurable from outside Myntra, and this document does
+not pretend otherwise: the tree tells us where to look, the evidence tells
+us which branch binds.
 
 ## Stage by stage
 

@@ -39,9 +39,16 @@ the point of decision:
   respondents wrote: "Will this still feel worth the money after six
   months", "What is the biggest reason I might regret buying this",
   "size is accurate or not", "Does it have polyester".
-- The two sources describe one gap from two angles: public complaints blame
-  the platform's information ("can't trust the photos"); item-anchored
-  answers phrase it as unanswered personal questions ("will it suit ME").
+- The two evidence streams are distinct, not fully independent (the survey's
+  options were informed by engine themes, with open text left free), and
+  they describe one gap from two angles: public complaints blame the
+  platform's information; item-anchored answers phrase the same gap as
+  unanswered personal questions.
+- Sharper root cause: Myntra already has the evidence shoppers need, but it
+  is scattered across photos, ratings and hundreds of buyer reviews, and
+  the platform never converts it into a trustworthy answer to the shopper's
+  specific doubt. So users perform that synthesis themselves, across
+  reviews, friends and competing apps.
 
 ## Existing workarounds (evidence the need is real)
 
@@ -67,9 +74,10 @@ purchase — the exact regret their free-text answers fear.
 
 - Every resolved doubt moves an item across the last stage before checkout;
   the business metric counts exactly these conversions.
-- The workaround data shows the decision currently happens off-platform,
-  where a competitor can win it (engine: bought_elsewhere outcomes).
-  Keeping doubt-resolution inside Myntra keeps the purchase inside Myntra.
+- The workaround data shows the decision work currently happens
+  off-platform (53 of 427 check the same item on a rival app), creating
+  purchase-leakage risk to competing platforms. Keeping doubt-resolution
+  inside Myntra keeps the decision, and its purchase, inside Myntra.
 - It requires no discounting: it monetises information Myntra already owns
   (its own review corpus) instead of margin.
 

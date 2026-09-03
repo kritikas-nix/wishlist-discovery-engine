@@ -1,50 +1,66 @@
 # Part 7 — Why this could fail, and what we do about it
 
-Risks specific to this solution, ranked by how much damage each could do.
+Risks specific to this solution, ranked by damage. Each has a mitigation,
+several already built rather than promised, and the first has an explicit
+kill criterion.
 
-## 1. The brief is honest and honesty reduces short-term sales
-An evidence-only brief will sometimes say "buyers report thin fabric" or
-"the reviews cannot settle your question". Some of those users will not buy.
-*Mitigation:* measure at the account level and over 30 days, not per item:
-the research shows undecided users currently leave to cross-check and often
-buy elsewhere or nowhere. A trusted "no" that keeps the user's next decision
-on Myntra beats an untrusted silence that loses the session. The A/B is
-designed on the north-star window, so this trade is measured, not assumed.
-If briefed cohorts show lower 30-day wishlist conversion, the bet is wrong
-and we stop — the metric design makes that visible fast.
+## 1. Honesty reduces short-term sales
+Truthful briefs will sometimes say "buyers report thin fabric" and lose
+that sale.
+*Mitigation:* measured at the user level over the 30-day window, where a
+trusted no beats an untrusted silence; the experiment makes the trade
+visible fast. *Kill criterion:* if treatment users convert no better, or
+worse, than control over 30 days, the bet is wrong and the feature stops.
 
-## 2. Model hallucination breaks the one thing the product sells: trust
+## 2. The AI creates a second trust problem
+The #1 blocker is "I don't trust Myntra's reviews", and the solution asks
+users to accept an AI reading of those same reviews. "If I don't trust the
+reviews, why trust your AI's summary of them?"
+*Mitigation, visible in the product, not promised:* the product never asks
+the shopper to trust an AI opinion. Every conclusion is traceable: the
+count of reviews behind it is shown, quotes are word for word and
+machine-checked against the source, negative evidence is surfaced rather
+than smoothed over, nothing is sponsored or ranked for commercial reasons,
+and the shopper can always open the source reviews themselves. The next
+priority on this axis is verified-purchase weighting, because otherwise
+the AI is only processing possibly-manipulated evidence more efficiently.
+
+## 3. Model hallucination breaks the product's one asset
 One invented quote and the credibility premise collapses.
-*Mitigation already built, not planned:* every quote is machine-checked as a
-verbatim substring of a fetched review and dropped if it is not; counts are
-counts of real reviews; "no_evidence" is a first-class verdict. Guardrail
-metric 2 keeps the "can't settle it" share visible so nobody tunes honesty
-out. Residual risk: summaries (not quotes) can still overreach; periodic
-human audit of a brief sample against source reviews.
+*Mitigation already built:* every quote is machine-verified as a verbatim
+substring of a fetched review and dropped if it is not; counts are counts;
+"no evidence" is a first-class verdict; the tagging pipeline itself was
+blind-audited by a human (32/40 relevance, 11/12 blocker agreement, bias
+direction published).
 
-## 3. Thin or gamed review bases give confident-sounding nonsense
-Many items have few reviews; some categories have incentivised ones.
+## 4. Thin or gamed review bases give confident nonsense
+Many items have few reviews; some categories attract incentivised ones.
 *Mitigation:* the brief states evidence strength ("only 4 of 22 reviews
-mention fit") and degrades to "reviews cannot settle it" below a floor;
-roadmap: weight verified purchases and brand-level evidence when the item's
-own base is thin.
+mention fit") and degrades to "not enough evidence" below a floor;
+verified-purchase weighting and brand-level evidence come next.
 
-## 4. Latency kills adoption
-A 30–60 second wait is fine in a prototype, fatal in a product flow.
-*Mitigation:* in production the brief is precomputed per item (batch, cached,
-refreshed as reviews arrive), not generated per view; the per-user doubt
-then selects which precomputed section leads. Cost falls with caching too:
-one generation serves every viewer of that item.
+## 5. Latency kills adoption
+20 to 60 seconds per live read is acceptable in a prototype, fatal in a
+product flow.
+*Mitigation:* in production, briefs are precomputed per item in batch,
+cached, and refreshed as reviews arrive; one generation serves every
+viewer; the shopper's chosen doubt only selects which section leads.
 
-## 5. Research base is small and skewed
-Survey n=14, no trust tick-box in the form; public data over-represents
-complainers; both are self-reported.
-*Mitigation:* stated openly in the deck; the two sources have opposite
-biases and point the same way, which is why the problem was chosen; the
-in-product A/B is the real test and is specified before scaling.
+## 6. The prototype's live fetching is brittle
+Scraping myntra.com can fail from anti-bot measures or page changes, and a
+grader may hit that moment.
+*Prototype mitigation:* one automatic retry, honest error copy, and real
+cached sample items that always work.
+*Production distinction, stated deliberately:* the production mitigation
+is not better scraping; it is that Myntra's own product would read its
+internal reviews and catalog services directly. The scraping exists only
+because this prototype lives outside the company.
 
-## 6. Prototype-specific fragility (demo day risk)
-Myntra can block live scraping at the moment a grader tests the app.
-*Mitigation already built:* three real items are pre-cached, so the full
-workflow is testable even if live fetching is blocked; the app says so
-honestly instead of erroring.
+## 7. The research base is small and biased
+Survey n=16; public feedback over-represents complainers; the two evidence
+streams are distinct but not fully independent.
+*Mitigation:* stated openly everywhere; opposite-bias sources agree;
+trust share is stable across sources (24% Play Store, 27% YouTube, 29%
+Reddit among deliberations); the corpus was grown 2.4x and findings held;
+the tagging audit is published. The experiment is the real test and is
+specified before scaling.

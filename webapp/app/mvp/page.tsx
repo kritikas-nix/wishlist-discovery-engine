@@ -52,8 +52,11 @@ export default function MvpPage() {
       <p className="muted" style={{ marginTop: 26 }}>
         A research prototype. Sample items are real Myntra products; pasted
         links are fetched live, and Myntra sometimes blocks automated
-        fetching. The samples always work. Every quote is word for word,
-        machine-checked against the fetched review text.
+        fetching. The samples always work. This product never asks you to
+        trust an AI opinion: every conclusion shows the number of reviews
+        behind it, every quote is word for word and machine-checked against
+        the source, negative evidence is shown rather than smoothed over,
+        and you can always open the reviews yourself.
       </p>
     </>
   );
