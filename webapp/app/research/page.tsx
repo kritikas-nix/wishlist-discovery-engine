@@ -123,14 +123,15 @@ export default function ResearchPage() {
         <p className="small" style={{ maxWidth: 680 }}>
           The brief asks when a wishlist save is genuine intent versus a
           bookmark. Two reads, stated honestly. In public deliberation texts
-          (engine, n=427), where the reason for saving was inferable at all
-          (183 items), stated purchase intent dominates: 139 intent-to-buy,
-          39 comparing options, 4 bookmarking; in 244 items the text does
-          not say, and the engine records that as unclear rather than
-          inferring. In self-descriptions (survey, n=16): 7 describe their
-          wishlist as things they plan to buy soon, 5 as a mix, 3 as
+          (engine, n=427), where saving intent was classifiable from the
+          text (183 items), stated purchase intent dominates: 139
+          intent-to-buy, 39 comparing options, 4 bookmarking, 1
+          decluttering; in the other 244 the text does not say, and the
+          engine records unclear rather than inferring. In
+          self-descriptions (survey, n=16): 7 describe their wishlist as
+          things they plan to buy soon, 5 as a mix, 3 as
           save-but-might-never-buy, 1 as a comparison set. Bookmarking is
-          real in self-image, rare in the texts of people actively
+          real in self-reports, rare in the texts of people actively
           deliberating a purchase.
         </p>
       </section>

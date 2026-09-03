@@ -233,7 +233,7 @@ export default function EnginePage() {
         <div className="kicker">Test it yourself</div>
         <h2 className="section">Paste any shopping text. Watch it get tagged.</h2>
         <p className="small" style={{ maxWidth: 640, marginBottom: 14 }}>
-          This runs the exact same tagging step used on all{" "}
+          This runs the same tagging schema and rules used on all{" "}
           {corpus.total_tagged.toLocaleString()} items. It usually takes
           under 15 seconds. <span className="tag-code">Unclear</span> is a
           correct answer, not a failure: when evidence is insufficient the

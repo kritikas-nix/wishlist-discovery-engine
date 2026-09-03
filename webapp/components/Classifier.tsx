@@ -80,8 +80,8 @@ export default function Classifier({
       <div className="card" style={{ marginBottom: 16 }}>
         <p style={{ fontWeight: 600 }}>What this is</p>
         <p className="small">
-          The exact AI tagging step that built the dataset above, running
-          live. Whatever you type gets the same treatment as the{" "}
+          The same tagging schema and rules that built the dataset above,
+          running live. Whatever you type gets the same treatment as the{" "}
           {totalTagged.toLocaleString()} collected items: is it a real
           purchase deliberation, what is blocking it, whose doubt it is,
           and the words that prove it.

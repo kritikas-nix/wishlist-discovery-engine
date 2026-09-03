@@ -205,6 +205,8 @@ workarounds: array of keys from this list. Empty array if none mentioned.
 ${workarounds}
 
 saving_intent: one of ['${SAVING_INTENT.join("', '")}']
+  Assign a specific saving intent only when the reason for saving is
+  explicitly stated or clearly evidenced in the text; otherwise "unclear".
 segment: one of ['${SEGMENT.join("', '")}']
 outcome: one of ['${OUTCOME.join("', '")}']
 
