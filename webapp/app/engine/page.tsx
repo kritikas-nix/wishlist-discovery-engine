@@ -138,7 +138,9 @@ export default function EnginePage() {
         <BarChart
           title="Workarounds mentioned in relevant items"
           n={relN}
-          data={workarounds}
+          nNote={`${workarounds.none ?? 0} of ${relN} items mentioned no workaround; this chart counts the ${relN - (workarounds.none ?? 0)} that described one`}
+          data={Object.fromEntries(
+            Object.entries(workarounds).filter(([k]) => k !== "none"))}
           labels={WORKAROUNDS}
         />
         <div className="takeaway">

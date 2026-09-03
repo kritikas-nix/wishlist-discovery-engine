@@ -66,9 +66,10 @@ export default function Classifier({
             {tags.blockers.length
               ? tags.blockers.map((b) => blockerLabels[b] ?? b).join(" · ")
               : "none tagged"}</p>
-          {tags.workarounds.length > 0 && (
+          {tags.workarounds.filter((w) => w !== "none").length > 0 && (
             <p><strong>Workarounds:</strong>{" "}
-              {tags.workarounds.map((w) => workaroundLabels[w] ?? w).join(" · ")}</p>
+              {tags.workarounds.filter((w) => w !== "none")
+                .map((w) => workaroundLabels[w] ?? w).join(" · ")}</p>
           )}
           {tags.evidence && (
             <blockquote>
