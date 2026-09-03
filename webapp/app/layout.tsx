@@ -20,7 +20,7 @@ const devanagari = Noto_Sans_Devanagari({
 export const metadata: Metadata = {
   title: "Why saved items don't get bought",
   description:
-    "A research project on Myntra wishlist-to-purchase conversion: an AI discovery engine over 1,309 public conversations, primary research on real wishlists, and a working prototype that answers the doubt blocking the purchase.",
+    "A research project on Myntra wishlist-to-purchase conversion: an AI discovery engine over 3,183 public conversations, primary research on real wishlists, and a working prototype that answers the doubt blocking the purchase.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

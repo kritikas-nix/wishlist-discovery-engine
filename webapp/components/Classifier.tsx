@@ -35,10 +35,11 @@ type Tags = {
 };
 
 export default function Classifier({
-  blockerLabels, workaroundLabels,
+  blockerLabels, workaroundLabels, totalTagged,
 }: {
   blockerLabels: Record<string, string>;
   workaroundLabels: Record<string, string>;
+  totalTagged: number;
 }) {
   const [text, setText] = useState("");
   const [busy, setBusy] = useState(false);
@@ -69,9 +70,10 @@ export default function Classifier({
         <p style={{ fontWeight: 600 }}>What this is</p>
         <p className="small">
           The exact AI tagging step that built the dataset above, running
-          live. Whatever you type gets the same treatment as the 1,309
-          collected items: is it a real purchase deliberation, what is
-          blocking it, whose doubt it is, and the words that prove it.
+          live. Whatever you type gets the same treatment as the{" "}
+          {totalTagged.toLocaleString()} collected items: is it a real
+          purchase deliberation, what is blocking it, whose doubt it is,
+          and the words that prove it.
         </p>
         <p style={{ fontWeight: 600, marginTop: 12 }}>How to use it</p>
         <p className="small">

@@ -224,7 +224,8 @@ export default function EnginePage() {
           under 15 seconds. <span className="tag-code">unclear</span> is a
           correct answer, not a failure: the model is told never to guess.
         </p>
-        <Classifier blockerLabels={BLOCKERS} workaroundLabels={WORKAROUNDS} />
+        <Classifier blockerLabels={BLOCKERS} workaroundLabels={WORKAROUNDS}
+          totalTagged={corpus.total_tagged} />
       </section>
     </>
   );
