@@ -39,7 +39,7 @@ body::before {
 
 main { position: relative; z-index: 1; }
 
-.wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 0 24px; }
 
 /* ---- nav ---- */
 .nav {
