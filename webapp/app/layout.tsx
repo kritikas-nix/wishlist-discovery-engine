@@ -44,7 +44,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               A product research project on wishlist-to-purchase conversion in
               Indian fashion e-commerce. Every number on this site is computed
               from collected data and carries its sample size; every quote is
-              verbatim. Not affiliated with Myntra.
+              verbatim. Research artifacts:{" "}
+              <a href="https://forms.gle/2f1TYzFeu95ZXCEe6"
+                style={{ color: "var(--berry)" }}>the survey instrument</a>.
+              Not affiliated with Myntra.
             </footer>
           </div>
         </main>
