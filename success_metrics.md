@@ -7,8 +7,8 @@ single one can be gamed in the wrong direction.
 ## Experiment success (the north star, made testable)
 
 **30-day wishlist-to-purchase conversion uplift:** % of treatment users who
-purchase at least one previously wishlisted item within 30 days, versus
-control.
+purchase at least one wishlisted item within 30 days of that item being
+added to the wishlist, versus control.
 *Design:* randomize **users, not items**, because the metric is user-level
 and one person holds many saved items; item-level randomization would let
 a user learn from a briefed item while another of their items sits in
@@ -62,6 +62,6 @@ buy / keep / remove).
 ## The honest boundary
 
 The research proves the constraint (evidence doubt blocks 211 of 427
-deliberations) and the mechanism (three real users moved from limbo to
+deliberations) and the mechanism (six real users moved toward clearer
 decisions). The experiment measures the lift. No lift number is claimed
 before it runs.

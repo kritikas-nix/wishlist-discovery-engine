@@ -182,7 +182,7 @@ export default function ResearchPage() {
           Fields not covered in a conversation are reported as not described
           rather than filled in. Outcomes across the six: three stated
           purchase intent, one moved toward buying, two confident removals.
-          All six left limbo.
+          All six moved toward a clearer decision.
         </p>
       </section>
     </>
