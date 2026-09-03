@@ -35,10 +35,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 worth a <em>look?</em>
               </Link>
               <span className="spacer" />
-              <Link href="/" className="link">The research</Link>
+              <Link href="/" className="link">The story</Link>
               <Link href="/engine" className="link">Discovery engine</Link>
               <Link href="/mvp" className="link">The prototype</Link>
-              <Link href="/research" className="link">Research</Link>
+              <Link href="/research" className="link">Research artefacts</Link>
             </nav>
             {children}
             <footer className="footer">
