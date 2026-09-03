@@ -13,7 +13,7 @@ lot for unresolved doubt.
 Wishlist users with purchase intent: people who save items planning or
 seriously considering buying them (survey: 7 of 16 respondents describe their
 wishlist use as "planning to buy soon", another 5 as "a mix"). Ages 19 to 30
-in the survey, up to 35 in the follow-up calls; students and working shoppers, buying mid-range
+in the survey, 24 to 42 in the six interviews; students and working shoppers, buying mid-range
 fashion (₹500–6,000 items in their actual wishlists).
 
 ## The product outcome to influence
@@ -101,6 +101,7 @@ trust" option, so the trust framing rests on the engine, free text, and
 the calls (Caller 2: "what photos show and what gets delivered are two
 different stories").
 Public feedback over-represents complainers. Self-reported behaviour is
-not observed behaviour. Three follow-up calls were completed; all three
-callers tested the prototype live on their own wishlist items. None of
+not observed behaviour. Six depth interviews were completed (interviews 4 to 6 discovery-first,
+prototype shown only at the end); all six tested it live on their own
+wishlist items. None of
 these limits change the direction all sources point.
